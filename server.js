@@ -1,6 +1,6 @@
 
 const ws = require('ws');
-const wss = new ws.WebSocketServer({port: 3801});
+const wss = new ws.WebSocketServer({port: 8000});
 
 const rooms = {};
 
