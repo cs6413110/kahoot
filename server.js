@@ -22,12 +22,19 @@ wss.on('connection', socket => {
     }
     socket.send(data);
     if (data.event === 'join') {
-      
+      if (rooms[data.id]) {
+        // join
+        socket.id = data.id;
+      } else return socket.send({event: 'error', message: 'Room not found!'});
     } else if (data.event === 'host') {
       const roomId = genId();
-      rooms[roomId] = {host: socket, sockets: [], questions: data.questions, time: data.time};
+      rooms[roomId] = {host: socket, sockets: [socket], questions: data.questions, time: data.time, question: -1};
+      socket.id = roomId;
       socket.send({event: 'code', code: roomId});
+    } else if (data.event === 'start') {
+      
     } else if (data.event === 'answer') {
+      // format of {event: 'answer', id: <roomid>, answer: 0-3}
       
     }
   });
