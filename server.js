@@ -10,9 +10,38 @@ const k = [0,1,2,3,4,5,6,7,8,9,'a','b','c','e','f','g','h','i','j','k','l','m','
   return o;
 }
 
+const getScoreboard = id => {
+  let scores = [];
+  for (const socket of rooms[id].sockets) scores.push([socket.username, socket.score]);
+  scores.sort((a, b) => a[1]-b[1]);
+  return scores;
+}
+
+const getScores = id => {
+  let scores = {};
+  for (const socket of rooms[id].sockets) scores[socket.username] = socket.score;
+  return scores;
+}
+
 const gameNewQuestion = id => {
+  clearTimeout(rooms[id].timeout);
   rooms[id].question++;
-  for (const socket of rooms[id].sockets) socket.send({event: 'question', });
+  if (rooms[id].question > rooms[id].questions.length) {
+    rooms[id].host.socket.send({event: 'gameover', scores: getScoreboard(id)});
+    for (const socket of rooms[id].sockets) socket.send({event: 'gameover', score: socket.score});
+    return;
+  }
+  let question = rooms[id].questions[rooms[id].question];
+  for (const socket of rooms[id].sockets) {
+    socket.answered = false;
+    socket.send({event: 'question', question: question.question, answers: question.answers});
+  }
+  rooms[id].timeout = setTimeout(() => {
+    rooms[id].host.send({event: 'scoreboard', scores: getScoreboard(id)});
+    let scores = getScores(id);
+    for (const socket of rooms[id].sockets) socket.send({event: 'score', score: socket.score}); // recent score included too
+    rooms[id].timeout = setTimeout(() => gameNewQuestion(id), 3000); // leaderboard phase
+  }, rooms[id].time || 10000);
 }
 
 const getPlayers = id => {
@@ -37,6 +66,7 @@ wss.on('connection', socket => {
           for (const s of rooms[data.id].sockets) if (data.username === s.username) return socket.send('That username is already taken for this game!');
           socket.id = data.id;
           socket.username = data.username;
+          socket.score = 0;
           rooms[data.id].sockets.push(socket);
           const players = getPlayers(data.id);
           for (const s of rooms[data.id].sockets) s.send({event: 'players', names: players});
@@ -49,10 +79,23 @@ wss.on('connection', socket => {
       socket.send({event: 'code', code: roomId});
     } else if (data.event === 'start') {
       if (socket === rooms[socket.id].host) { 
-        //gameNewQuestion(socket.id);
+        gameNewQuestion(socket.id);
       }
     } else if (data.event === 'answer') {
-      
+      socket.answered = true;
+      socket.lastScore = 0;
+      if (data.answer === room[socket.id].questions[room[socket.id].question].correct) {
+        socket.lastScore = (1-data.time/room[socket.id].time)*1000;
+      } 
+      socket.score += socket.lastScore;
+      let allAnswered = true;
+      for (const socket of room[socket.id].sockets) if (room[socket.id].host !== socket && !socket.answered) allAnswered = false;
+      if (allAnswered) {
+        rooms[socket.id].host.send({event: 'scoreboard', scores: getScoreboard(id)});
+        let scores = getScores(socket.id);
+        for (const socket of rooms[socket.id].sockets) socket.send({event: 'score', score: socket.score}); // recent score included too
+        rooms[socket.id].timeout = setTimeout(() => gameNewQuestion(socket.id), 3000); // leaderboard phase
+      }
     }
   });
   socket.on('close', () => {
