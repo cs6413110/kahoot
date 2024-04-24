@@ -18,7 +18,7 @@ document.body.innerHTML += `
     </div>
     
     <!-- In Game QnA -->
-    <div id="q&a" style="visibility: hidden">
+    <div id="q&a">
       <div class="container">
         <div class="question" id="QnA">Question: </div>
         <div class="options">
@@ -107,6 +107,15 @@ document.body.innerHTML += `
   </style>
 </html>
 `;
+const initial = document.getElementById('initial');
+const lobby = document.getElementById('lobby');
+const qna = document.getElementById('q&a');
+const k = [initial, lobby, qna], swapMenu = e => {
+  for (let i = 0; i < k.length; i++) {
+    k[i].style.visibility = e === i ? 'visible' : 'hidden';
+  }
+}
+swapMenu(0);
 window.onerror = alert;
 const socket = new WebSocket('ws://141.148.128.231:443'); // connect to server
 const game = {};
@@ -122,6 +131,7 @@ socket.onmessage = d => {
     const a = data.names.reduce((a, c) => a+c+'<br>');
     document.getElementById('playerlist').innerHTML = a;
     document.getElementById('playercount').innerHTML = data.names.length+' Players';
+    swapMenu(1)
   }
 }
 socket.onclose = () => alert('Disconnected from server! Please reload.');
