@@ -6,20 +6,19 @@ document.body.innerHTML += `
   </header>
   <body>
   	<!-- Host Game Button -->
-    <div class='initial'>
+    <div id='initial'>
       <button onclick='createGame()'>Host a Game</button>
     </div>
     
     <!-- Pre-Game Lobby -->
     <div id="lobby">
-    
+      <div id='roomID'>AAAAAA</div>
     </div>
     
     <!-- In Game QnA -->
-    <div id="QnAContainer" style="visibility: hidden">
+    <div id="q&a" style="visibility: hidden">
       <div class="container">
         <div class="question" id="QnA">Question: </div>
-        <div id='roomID'>AAAAAA</div>
         <div class="options">
           <div class="option">Answer 1:</div>
           <div class="option">Answer 2:</div>
