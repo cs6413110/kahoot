@@ -34,7 +34,7 @@ document.body.innerHTML += `
   	body {background-color: powderblue;}
     
     /* Host Game Button */
-    .initial {
+    #initial {
       position: absolute;
       top: 20%;
       left: 50%;
