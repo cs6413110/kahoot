@@ -128,11 +128,11 @@ socket.onmessage = d => {
   if (data.event === 'code') {
     game.code = data.code;
     document.getElementById('roomID').innerHTML = data.code;
+    swapMenu(1)
   } else if (data.event === 'players') {
     const a = data.names.reduce((a, c) => a+c+'<br>');
     document.getElementById('playerlist').innerHTML = a;
     document.getElementById('playercount').innerHTML = data.names.length+' Players';
-    swapMenu(1)
   }
 }
 socket.onclose = () => alert('Disconnected from server! Please reload.');
