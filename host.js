@@ -10,7 +10,7 @@ document.body.innerHTML += `
     </div>
     <div class="container">
       <div class="question">Question: </div>
-      <div class='roomID'>asdf</div>
+      <div id='roomID'>asdf</div>
       <div class="options">
         <div class="option">Answer 1:</div>
         <div class="option">Answer 2:</div>
