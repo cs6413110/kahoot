@@ -39,7 +39,7 @@ wss.on('connection', socket => {
           socket.username = data.username;
           rooms[data.id].sockets.push(socket);
           const players = getPlayers(data.id);
-          for (const s of rooms[data.id].sockets) s.send({event: 'players', amount: players.length, names: players});
+          for (const s of rooms[data.id].sockets) s.send({event: 'players', names: players});
         } else return socket.send({event: 'error', message: 'Game already started!'});
       } else return socket.send({event: 'error', message: 'Room not found!'});
     } else if (data.event === 'host') {
