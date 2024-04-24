@@ -4,24 +4,66 @@
     <title>Kahooty Rip-off</title>
   </header>
   <body>
-    <div class='initial'>
+  	<!-- Host Game Button -->
+    <div class='initial' style="visibility: hidden;">
       <button onclick='createGame()'>Host a Game</button>
     </div>
-    <div class="container">
-      <div class="question" id="QnA">Question: </div>
-      <div id='roomID'>asdf</div>
-      <div class="options">
-        <div class="option">Answer 1:</div>
-        <div class="option">Answer 2:</div>
-        <div class="option">Answer 3:</div>
-        <div class="option">Answer 4</div>
+    
+    <!-- Pre-Game Lobby -->
+    <div id="lobby">
+      <div class="hostRoom">
+        <div class="code">Room Code:</div>
+        <div id='roomID'>AAAAAA</div>
       </div>
-      <div class="timer">Timer: 00:00</div>
     </div>
-    <div id="lobby"></div>
+    
+    <!-- In Game QnA -->
+    <div id="QnAContainer" style="visibility: hidden">
+      <div class="container">
+        <div class="question" id="QnA">Question: </div>
+        <div class="options">
+          <div class="option">Answer 1:</div>
+          <div class="option">Answer 2:</div>
+          <div class="option">Answer 3:</div>
+          <div class="option">Answer 4:</div>
+        </div>
+        <div class="timer">Timer: 00:00</div>
+      </div>
+    </div>
   </body>  
 
   <style>
+  	body {background-color: powderblue;}
+    
+    /* Host Game Button */
+    .initial {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+	  scale: 150%;
+      transform: translateX(-50%);
+      width: auto;
+      padding: 5px 5px;
+      border-radius: 4px;
+    }
+        /* Pre-Game Lobby */
+    .hostRoom {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      
+      height: auto;
+      width: ;
+      
+      background-color: #f0f0f0;
+      padding: 5px 5px;
+      
+      border: 1px solid black;
+      border-radius: 4px;
+    }
+    
+    	/* In-Game Questions */
     .container {
       position: relative;
       height: 100vh;
@@ -35,7 +77,6 @@
       left: 50%;
       transform: translateX(-50%);
       padding: 10px;
-      margin: 10px;
       background-color: #f0f0f0;
       border: 2px solid #ccc;
       border-radius: 8px;
@@ -53,32 +94,18 @@
       border-radius: 8px;
     }
     .option:hover {
-      transform: scale(0.9);
+      transform: scale(0.98);
       cursor: pointer;
     }
     .timer {
-      position: relative;
+      position: absolute;
       top: 10px;
       right: 10px;
+      width: auto;
       background-color: #f0f0f0;
       padding: 5px 10px;
+      border: 1px solid black;
       border-radius: 100px;
-    }  
-    #roomID {
-      position: relative;
-      top: 45px;
-      left: 10px;
-      background-color: #f0f0f0;
-      padding: 5px 5px;
-      border-radius: 4px;
-    }
-    .initial {
-      position: relative;
-      top: 10px;
-      left: 10px;
-      background-color: #f0f0f0;
-      padding: 5px 5px;
-      border-radius: 4px;
-    }
+    } 
   </style>
 </html>
