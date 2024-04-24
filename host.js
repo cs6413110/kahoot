@@ -6,19 +6,23 @@ document.body.innerHTML += `
   </header>
   <body>
   	<!-- Host Game Button -->
-    <div id='initial'>
+    <div class='initial' style="visibility: hidden;">
       <button onclick='createGame()'>Host a Game</button>
     </div>
     
     <!-- Pre-Game Lobby -->
     <div id="lobby">
-      <div id='roomID'>AAAAAA</div>
-      <div id='playercount'></div>
-      <div id='playerlist'></div>
+      <div class="hostRoom">
+        <div class="code">~Room Code~</div>
+        <div id='roomID'>AAAAAA</div>
+      </div>
+      <div class="playerDisplay">
+        <div></div>
+      </div>
     </div>
     
     <!-- In Game QnA -->
-    <div id="q&a">
+    <div id="QnAContainer" style="visibility: hidden">
       <div class="container">
         <div class="question" id="QnA">Question: </div>
         <div class="options">
@@ -36,7 +40,7 @@ document.body.innerHTML += `
   	body {background-color: powderblue;}
     
     /* Host Game Button */
-    #initial {
+    .initial {
       position: absolute;
       top: 20%;
       left: 50%;
@@ -46,18 +50,30 @@ document.body.innerHTML += `
       padding: 5px 5px;
       border-radius: 4px;
     }
+    
+    
         /* Pre-Game Lobby */
-    #roomID {
-      position: absolute;
-      top: 10px;
-      left: 10px;	
-      width: auto;
-      height: 10px;
-      align-content: center;
+    .hostRoom {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+      left: 25%;
       background-color: #f0f0f0;
-      padding: 5px 5px;
+      padding: 2px 2px;
       border: 1px solid black;
-      border-radius: 4px;
+      border-radius: 8px;
+    }
+    .playerDisplay {
+  	  position: absolute;
+      height: 50%;
+      width: 90%;
+      padding: 5px;
+      margin: 2.5%;
+      background-color: #f0f0f0;
+      border: 1px solid black;
+      border-radius: 16px;
     }
     
     	/* In-Game Questions */
