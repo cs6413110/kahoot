@@ -9,7 +9,7 @@ document.body.innerHTML += `
       <button onclick='createGame()'>Host a Game</button>
     </div>
     <div class="container">
-      <div class="question">Question: </div>
+      <div class="question" id="QnA">Question: </div>
       <div id='roomID'>asdf</div>
       <div class="options">
         <div class="option">Answer 1:</div>
@@ -19,6 +19,7 @@ document.body.innerHTML += `
       </div>
       <div class="timer">Timer: 00:00</div>
     </div>
+    <div id="lobby"></div>
   </body>  
 
   <style>
@@ -57,13 +58,29 @@ document.body.innerHTML += `
       cursor: pointer;
     }
     .timer {
-      position: absolute;
+      position: relative;
       top: 10px;
       right: 10px;
       background-color: #f0f0f0;
       padding: 5px 10px;
-      border-radius: 5px;
+      border-radius: 100px;
     }  
+    #roomID {
+      position: absolute;
+      top: 30px;
+      left: 10px;
+      background-color: #f0f0f0;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+    .initial {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #f0f0f0;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
   </style>
 </html>
 `;
