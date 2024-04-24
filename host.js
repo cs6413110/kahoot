@@ -13,8 +13,9 @@ document.body.innerHTML += `
     <!-- Pre-Game Lobby -->
     <div id="lobby">
       <div class="hostRoom">
-        <div class="code">~Room Code</div>
-        <div id='roomID'>AAAAAA</div>
+        <div class="code">Room Code</div>
+        <div id='roomID'>------</div>
+	<button onclick='startGame()'>Start Game</button>
       </div>
       <div id='playercount'></div>
       <div class="playerDisplay" id='playerlist'>
@@ -146,7 +147,7 @@ socket.onmessage = d => {
     document.getElementById('roomID').innerHTML = data.code;
     swapMenu(1)
   } else if (data.event === 'players') {
-    const a = data.names.reduce((a, c) => a+c+'<br>');
+    const a = data.names.reduce((a, c) => a+'<br>'+c); // can optimize for styling later
     document.getElementById('playerlist').innerHTML = a;
     document.getElementById('playercount').innerHTML = data.names.length+' Players';
   }
@@ -155,14 +156,12 @@ socket.onclose = () => alert('Disconnected from server! Please reload.');
 
 const createGame = () => {
   socket.send({event: 'host', questions: prompt('Input JSON data for game: ')});
-  
   /*
   JSON format for questions:
   [{question: '', answers: ['a', 'b', 'c', 'd'], correct: 0(a), time: 30}]
   */
-  // hide the creategame button
-  // load the lobby
-  // add handlers for beginGame
-  
 }
+
+const startGame = () => socket.send({event: 'start'});
+
 
