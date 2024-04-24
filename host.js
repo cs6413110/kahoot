@@ -54,7 +54,7 @@ document.body.innerHTML += `
       border-radius: 8px;
     }
     .option:hover {
-      transform: scale(0.9);
+      transform: scale(0.98);
       cursor: pointer;
     }
     .timer {
