@@ -66,19 +66,19 @@ document.body.innerHTML += `
       border-radius: 100px;
     }  
     #roomID {
-      position: absolute;
-      top: 30px;
+      position: relative;
+      top: 45px;
       left: 10px;
       background-color: #f0f0f0;
-      padding: 5px 10px;
+      padding: 5px 5px;
       border-radius: 4px;
     }
     .initial {
-      position: absolute;
+      position: relative;
       top: 10px;
       left: 10px;
       background-color: #f0f0f0;
-      padding: 5px 10px;
+      padding: 5px 5px;
       border-radius: 4px;
     }
   </style>
