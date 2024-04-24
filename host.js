@@ -1,15 +1,72 @@
-/*
-Actually seth we will be using js files because the school blocked static github hosting and even if they didn't ssl prevents server communication without a domain.
-
-We can still use CSS, but it will be executed via js.
-
-Write your html code in a seperate file and we can implement tomorrow.
+document.body.innerHTML += `
+<!-- Host Side -->
 
 
-So don't use the .html file? or don't create a .css? Or what else do I use?
+<DOCTYPE html>
+  <html lang="en-US"> 
+    <header>
+      <title>Kahooty Rip-off</title>
+    </header>
+    
+    <body>
+      <div class="container">
+        <div class="question">Question: </div>
 
-A: We are going to combine them all in a js file. You can start by doing whatever you want and I'll combine it tomorrow.
+        <div class="options">
+          <div class="option">Answer 1:</div>
+          <div class="option">Answer 2:</div>
+          <div class="option">Answer 3:</div>
+          <div class="option">Answer 4</div>
+        </div>
 
-Q: After I program something, how do I view it as an actual page?
+        <div class="timer">Timer: 00:00</div>
+      </div>
+    </body>  
 
-*/
+    <style>
+      .container {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .question {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px;
+        margin: 10px;
+        background-color: #f0f0f0;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+      }
+      .options {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+      }
+      .option {
+        padding: 10px;
+        margin: 5px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+      .option:hover {
+        transform: scale(0.9);
+        cursor: pointer;
+      }
+      .timer {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #f0f0f0;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+      
+    </style>
+  </html>
+`;
