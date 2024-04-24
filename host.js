@@ -5,24 +5,61 @@ document.body.innerHTML += `
     <title>Kahooty Rip-off</title>
   </header>
   <body>
+  	<!-- Host Game Button -->
     <div class='initial'>
+      <button onclick='createGame()'>Host a Game</button>
     </div>
-    <div class="container">
-      <button onclick='createGame()' style='width: 500px; height: 200px; z-index: 1000000'>Host a Game</button>
-      <div class="question" id="QnA">Question: </div>
-      <div id='roomID'>asdf</div>
-      <div class="options">
-        <div class="option">Answer 1:</div>
-        <div class="option">Answer 2:</div>
-        <div class="option">Answer 3:</div>
-        <div class="option">Answer 4</div>
+    
+    <!-- Pre-Game Lobby -->
+    <div id="lobby">
+    
+    </div>
+    
+    <!-- In Game QnA -->
+    <div id="QnAContainer" style="visibility: hidden">
+      <div class="container">
+        <div class="question" id="QnA">Question: </div>
+        <div id='roomID'>AAAAAA</div>
+        <div class="options">
+          <div class="option">Answer 1:</div>
+          <div class="option">Answer 2:</div>
+          <div class="option">Answer 3:</div>
+          <div class="option">Answer 4:</div>
+        </div>
+        <div class="timer">Timer: 00:00</div>
       </div>
-      <div class="timer">Timer: 00:00</div>
     </div>
-    <div id="lobby"></div>
   </body>  
 
   <style>
+  	body {background-color: powderblue;}
+    
+    /* Host Game Button */
+    .initial {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+	  scale: 150%;
+      transform: translateX(-50%);
+      width: auto;
+      padding: 5px 5px;
+      border-radius: 4px;
+    }
+        /* Pre-Game Lobby */
+    #roomID {
+      position: absolute;
+      top: 10px;
+      left: 10px;	
+      width: auto;
+      height: 10px;
+      align-content: center;
+      background-color: #f0f0f0;
+      padding: 5px 5px;
+      border: 1px solid black;
+      border-radius: 4px;
+    }
+    
+    	/* In-Game Questions */
     .container {
       position: relative;
       height: 100vh;
@@ -36,7 +73,6 @@ document.body.innerHTML += `
       left: 50%;
       transform: translateX(-50%);
       padding: 10px;
-      margin: 10px;
       background-color: #f0f0f0;
       border: 2px solid #ccc;
       border-radius: 8px;
@@ -61,27 +97,12 @@ document.body.innerHTML += `
       position: absolute;
       top: 10px;
       right: 10px;
+      width: auto;
       background-color: #f0f0f0;
       padding: 5px 10px;
+      border: 1px solid black;
       border-radius: 100px;
-    }  
-    #roomID {
-      position: absolute;
-      top: 45px;
-      left: 10px;
-      width: 50px;
-      background-color: #f0f0f0;
-      padding: 5px 5px;
-      border-radius: 4px;
-    }
-    .initial {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      width: 50px;
-      padding: 5px 5px;
-      border-radius: 4px;
-    }
+    } 
   </style>
 </html>
 `;
