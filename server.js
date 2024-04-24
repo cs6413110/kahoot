@@ -27,7 +27,7 @@ const gameNewQuestion = id => {
   clearTimeout(rooms[id].timeout);
   rooms[id].question++;
   if (rooms[id].question >= rooms[id].questions.length) {
-    rooms[id].host.socket.send({event: 'gameover', scores: getScoreboard(id)});
+    rooms[id].host.send({event: 'gameover', scores: getScoreboard(id)});
     for (const socket of rooms[id].sockets) socket.send({event: 'gameover', score: socket.score});
     return;
   }
@@ -39,7 +39,7 @@ const gameNewQuestion = id => {
   rooms[id].timeout = setTimeout(() => {
     rooms[id].host.send({event: 'scoreboard', scores: getScoreboard(id)});
     let scores = getScores(id);
-    for (const socket of rooms[id].sockets) socket.send({event: 'score', score: socket.score}); // recent score included too
+    for (const socket of rooms[id].sockets) if (socket !== rooms[id].host) socket.send({event: 'score', score: socket.score}); // recent score included too
     rooms[id].timeout = setTimeout(() => gameNewQuestion(id), 3000); // leaderboard phase
   }, rooms[id].time || 10000);
 }
@@ -93,7 +93,7 @@ wss.on('connection', socket => {
       if (allAnswered) {
         rooms[socket.id].host.send({event: 'scoreboard', scores: getScoreboard(id)});
         let scores = getScores(socket.id);
-        for (const socket of rooms[socket.id].sockets) socket.send({event: 'score', score: socket.score}); // recent score included too
+        for (const socket of rooms[socket.id].sockets) if (socket !== rooms[id].host) socket.send({event: 'score', score: socket.score}); // recent score included too
         rooms[socket.id].timeout = setTimeout(() => gameNewQuestion(socket.id), 3000); // leaderboard phase
       }
     }
