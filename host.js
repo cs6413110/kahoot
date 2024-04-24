@@ -58,7 +58,7 @@ document.body.innerHTML += `
       cursor: pointer;
     }
     .timer {
-      position: relative;
+      position: absolute;
       top: 10px;
       right: 10px;
       background-color: #f0f0f0;
