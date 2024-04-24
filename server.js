@@ -26,7 +26,7 @@ const getScores = id => {
 const gameNewQuestion = id => {
   clearTimeout(rooms[id].timeout);
   rooms[id].question++;
-  if (rooms[id].question > rooms[id].questions.length) {
+  if (rooms[id].question >= rooms[id].questions.length) {
     rooms[id].host.socket.send({event: 'gameover', scores: getScoreboard(id)});
     for (const socket of rooms[id].sockets) socket.send({event: 'gameover', score: socket.score});
     return;
