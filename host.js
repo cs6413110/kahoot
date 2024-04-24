@@ -123,6 +123,7 @@ socket._send = socket.send;
 socket.send = m => socket._send(JSON.stringify(m))
 socket.onopen = () => alert('Connected to server!');
 socket.onmessage = d => {
+  alert(d.data);
   const data = JSON.parse(d.data);
   if (data.event === 'code') {
     game.code = data.code;
