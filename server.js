@@ -63,7 +63,7 @@ wss.on('connection', socket => {
         s.close();
       }
     } else {
-      if (rooms[socket.id].sockets.includes(socket)) rooms[socket.id].splice(rooms[data.id].indexOf(socket), 1);
+      if (rooms[socket.id].sockets.includes(socket)) rooms[socket.id].splice(rooms[socket.id].indexOf(socket), 1);
       if (rooms[socket.id].sockets.length === 0 && rooms[socket.id].gamestate === 1) {
         rooms[data.id].host.send({event: 'error', message: 'All the players left'});
         rooms[data.id].host.close();
