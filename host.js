@@ -6,23 +6,23 @@ document.body.innerHTML += `
   </header>
   <body>
   	<!-- Host Game Button -->
-    <div class='initial' style="visibility: hidden;">
+    <div id='initial'>
       <button onclick='createGame()'>Host a Game</button>
     </div>
     
     <!-- Pre-Game Lobby -->
     <div id="lobby">
       <div class="hostRoom">
-        <div class="code">~Room Code~</div>
+        <div class="code">~Room Code</div>
         <div id='roomID'>AAAAAA</div>
       </div>
-      <div class="playerDisplay">
-        <div></div>
+      <div id='playercount'></div>
+      <div class="playerDisplay" id='playerlist'>
       </div>
     </div>
     
     <!-- In Game QnA -->
-    <div id="QnAContainer" style="visibility: hidden">
+    <div id="q&a">
       <div class="container">
         <div class="question" id="QnA">Question: </div>
         <div class="options">
@@ -40,7 +40,7 @@ document.body.innerHTML += `
   	body {background-color: powderblue;}
     
     /* Host Game Button */
-    .initial {
+    #initial {
       position: absolute;
       top: 20%;
       left: 50%;
