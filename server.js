@@ -20,7 +20,6 @@ wss.on('connection', socket => {
       console.log('Invalid data: '+data);
       socket.send({event: 'error', message: 'Invalid Data!'});
     }
-    socket.send(data);
     if (data.event === 'join') {
       if (rooms[data.id]) {
         // join
