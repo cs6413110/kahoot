@@ -10,6 +10,17 @@ const k = [0,1,2,3,4,5,6,7,8,9,'a','b','c','e','f','g','h','i','j','k','l','m','
   return o;
 }
 
+const gameNewQuestion = id => {
+  rooms[id].question++;
+  for (const socket of rooms[id].sockets) socket.send({event: 'question', });
+}
+
+const getPlayers = id => {
+  let o = [];
+  for (const s of rooms[id].sockets) if (s.username) o.push(s.username);
+  return o;
+}
+
 wss.on('connection', socket => {
   socket._send = socket.send;
   socket.send = d => socket._send(JSON.stringify(d));
@@ -22,19 +33,29 @@ wss.on('connection', socket => {
     }
     if (data.event === 'join') {
       if (rooms[data.id]) {
-        // join
-        socket.id = data.id;
+        if (rooms[data.id].gamestate === 0) {
+          for (const s of rooms[data.id].sockets) if (data.username === s.username) return socket.send('That username is already taken for this game!');
+          socket.id = data.id;
+          socket.username = data.username;
+          rooms[data.id].sockets.push(socket);
+          const players = getPlayers(data.id);
+          for (const s of rooms[data.id].sockets) s.send({event: 'players', amount: rooms[data.id].sockets.length, names: players});
+        } else return socket.send({event: 'error', message: 'Game already started!'});
       } else return socket.send({event: 'error', message: 'Room not found!'});
     } else if (data.event === 'host') {
       const roomId = genId();
-      rooms[roomId] = {host: socket, sockets: [socket], questions: data.questions, time: data.time, question: -1};
+      rooms[roomId] = {host: socket, sockets: [socket], questions: data.questions, time: data.time, question: -1, gamestate: 0}; // 0 => joining, 1 => active
       socket.id = roomId;
       socket.send({event: 'code', code: roomId});
     } else if (data.event === 'start') {
-      
+      if (socket === rooms[socket.id].host) { 
+        //gameNewQuestion(socket.id);
+      }
     } else if (data.event === 'answer') {
-      // format of {event: 'answer', id: <roomid>, answer: 0-3}
       
     }
+  });
+  socket.on('close', () => {
+    
   });
 });
