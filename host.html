@@ -12,8 +12,11 @@
     <!-- Pre-Game Lobby -->
     <div id="lobby">
       <div class="hostRoom">
-        <div class="code">Room Code:</div>
+        <div class="code">~Room Code~</div>
         <div id='roomID'>AAAAAA</div>
+      </div>
+      <div class="playerDisplay">
+        <div></div>
       </div>
     </div>
     
@@ -46,21 +49,30 @@
       padding: 5px 5px;
       border-radius: 4px;
     }
+    
+    
         /* Pre-Game Lobby */
     .hostRoom {
+      position: relative;
       display: flex;
-      flex-direction: row;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      
-      height: auto;
-      width: ;
-      
+      width: 50%;
+      left: 25%;
       background-color: #f0f0f0;
-      padding: 5px 5px;
-      
+      padding: 2px 2px;
       border: 1px solid black;
-      border-radius: 4px;
+      border-radius: 8px;
+    }
+    .playerDisplay {
+  	  position: absolute;
+      height: 50%;
+      width: 90%;
+      padding: 5px;
+      margin: 2.5%;
+      background-color: #f0f0f0;
+      border: 1px solid black;
+      border-radius: 16px;
     }
     
     	/* In-Game Questions */
