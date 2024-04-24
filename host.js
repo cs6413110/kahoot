@@ -67,7 +67,7 @@ document.body.innerHTML += `
   </style>
 </html>
 `;
-
+window.onerror = alert;
 const socket = new WebSocket('ws://141.148.128.231:443'); // connect to server
 const game = {};
 socket._send = socket.send;
@@ -75,6 +75,7 @@ socket.send = m => socket._send(JSON.stringify(m))
 socket.onopen = () => alert('Connected to server!');
 socket.onmessage = d => {
   const data = JSON.parse(d.data);
+  alert(data);
   if (data.event === 'code') {
     info.code = data.code;
     document.getElementById('roomID').innerHTML = data.code;
