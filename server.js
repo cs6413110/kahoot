@@ -56,6 +56,7 @@ wss.on('connection', socket => {
     }
   });
   socket.on('close', () => {
+    if (!socket.id) return;
     if (socket === rooms[socket.id].host) {
       for (const s of rooms[socket.id].sockets) {
         s.send({event: 'error', message: 'Host left the game'});
