@@ -77,7 +77,6 @@ document.body.innerHTML += `
       position: relative;
       top: 10px;
       left: 10px;
-      background-color: #f0f0f0;
       padding: 5px 5px;
       border-radius: 4px;
     }
