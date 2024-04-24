@@ -13,6 +13,8 @@ document.body.innerHTML += `
     <!-- Pre-Game Lobby -->
     <div id="lobby">
       <div id='roomID'>AAAAAA</div>
+      <div id='playercount'></div>
+      <div id='playerlist'></div>
     </div>
     
     <!-- In Game QnA -->
@@ -116,6 +118,10 @@ socket.onmessage = d => {
   if (data.event === 'code') {
     game.code = data.code;
     document.getElementById('roomID').innerHTML = data.code;
+  } else if (data.event === 'players') {
+    const a = data.names.reduce((a, c) => a+c+'<br>');
+    document.getElementById('playerlist').innerHTML = a;
+    document.getElementById('playercount').innerHTML = data.names.length+' Players';
   }
 }
 socket.onclose = () => alert('Disconnected from server! Please reload.');
