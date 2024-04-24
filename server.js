@@ -56,6 +56,18 @@ wss.on('connection', socket => {
     }
   });
   socket.on('close', () => {
-    
+    if (socket === rooms[socket.id].host) {
+      for (const s of rooms[socket.id].sockets) {
+        s.send({event: 'error', message: 'Host left the game'});
+        s.close();
+      }
+    } else {
+      if (rooms[socket.id].sockets.includes(socket)) rooms[socket.id].splice(rooms[data.id].indexOf(socket), 1);
+      if (rooms[socket.id].sockets.length === 0 && rooms[socket.id].gamestate === 1) {
+        rooms[data.id].host.send({event: 'error', message: 'All the players left'});
+        rooms[data.id].host.close();
+        rooms[data.id] = undefined;
+      }
+    }
   });
 });
