@@ -6,7 +6,7 @@ document.body.innerHTML += `
   </header>
   <body>
     <div class='initial'>
-      <button onclick='createGame()' style='width: 500px; height: 200px'>Host a Game</button>
+      <button onclick='createGame()' style='width: 500px; height: 200px; z-index: 1000000'>Host a Game</button>
     </div>
     <div class="container">
       <div class="question" id="QnA">Question: </div>
