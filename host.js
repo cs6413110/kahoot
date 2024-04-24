@@ -74,11 +74,9 @@ socket._send = socket.send;
 socket.send = m => socket._send(JSON.stringify(m))
 socket.onopen = () => alert('Connected to server!');
 socket.onmessage = d => {
-  alert(d.data);
   const data = JSON.parse(d.data);
-  alert(data);
   if (data.event === 'code') {
-    info.code = data.code;
+    game.code = data.code;
     document.getElementById('roomID').innerHTML = data.code;
   }
 }
