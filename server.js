@@ -92,7 +92,7 @@ wss.on('connection', socket => {
       let allAnswered = true;
       for (const socket of room.sockets) if (room.host !== socket && !socket.answered) allAnswered = false;
       if (allAnswered) {
-        room.host.send({event: 'scoreboard', scores: getScoreboard(id)});
+        room.host.send({event: 'scoreboard', scores: getScoreboard(socket.id)});
         let scores = getScores(socket.id);
         for (const socket of room.sockets) if (socket !== room.host) socket.send({event: 'score', score: socket.score}); // recent score included too
         room.timeout = setTimeout(() => gameNewQuestion(socket.id), 3000); // leaderboard phase
