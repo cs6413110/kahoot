@@ -38,14 +38,14 @@ document.body.innerHTML += `
   </body>  
 
   <style>
-  	body {background-color: powderblue; overflow-x:hidden;}
+    body {background-color: powderblue; overflow-x:hidden;}
     
     /* Host Game Button */
     #initial {
       position: absolute;
       top: 20%;
       left: 50%;
-	  scale: 150%;
+      scale: 150%;
       transform: translateX(-50%);
       width: auto;
       padding: 5px 5px;
@@ -67,7 +67,7 @@ document.body.innerHTML += `
       border-radius: 8px;
     }
     .playerDisplay {
-  	  position: absolute;
+      position: absolute;
       height: 75%;
       width: 90%;
       padding: 5px;
@@ -75,6 +75,17 @@ document.body.innerHTML += `
       background-color: #f0f0f0;
       border: 1px solid black;
       border-radius: 16px;
+    }
+    /* Player Lobby Display For Now. */
+    .player {
+      display: flex;
+      flex-direction: row;
+      height: 25px;
+      width: 40px;
+      background-color: #f0f0f0;
+      padding: 2px;
+      border: 1px solid black;
+      border-radius: 8px;
     }
     
     	/* In-Game Questions */
