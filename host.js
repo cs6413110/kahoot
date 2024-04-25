@@ -1,177 +1,170 @@
 document.body.innerHTML += `
-<DOCTYPE html>
-<html lang="en-US"> 
-  <header>
-    <title>Kahooty Rip-off</title>
-  </header>
-  <body>
-  	<!-- Host Game Button -->
-    <div id='initial'>
-      <button onclick='createGame()'>Host a Game</button>
+<title>Kahooty Rip-off</title>
+<div id='initial'>
+  <button onclick='createGame()'>Host a Game</button>
+</div>
+<div id='lobby'>
+  <div class='hostRoom'>
+    <span id='roomID'>XXXXXX</span>
+    <div><button onclick='startGame()'>Start Game</button></div>
+  </div>
+  <div id='playercount'></div>
+  <div class='playerDisplay' id='playerlist'>
+    <div class='player'>Aaron</div>
+    <div class='player'>Seth</div>
+    <div class='player'>Aaron</div>
+    <div class='player'>Seth</div><div class='player'>Aaron</div>
+    <div class='player'>Seth</div><div class='player'>Aaron</div>
+    <div class='player'>Seth</div><div class='player'>Aaron</div>
+    <div class='player'>Seth</div><div class='player'>Aaron</div>
+    <div class='player'>Seth</div><div class='player'>Aaron</div>
+    <div class='player'>Seth</div><div class='player'>Aaron</div>
+    <div class='player'>Seth</div><div class='player'>Aaron</div>
+    <div class='player'>Seth</div>
+  </div>
+</div>
+<div id='q&a'>
+  <div class='container'>
+    <div class='question' id='QnA'>What happened in the Willy Wonka Factory?</div>
+    <div class='options'>
+      <button class='option' id='a'>Exploded</button>
+      <button class='option' id='b'>Burned</button>
+      <button class='option' id='c'>Grew legs and walked away</button>
+      <button class='option' id='d'>Dug a hole and buried itself</button>
     </div>
+  </div>
+</div>
+<div id='leaderboard'>
+  <div class='score'></div>
+</div>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana;
+}
     
-    <!-- Pre-Game Lobby -->
-    <div id="lobby">
-      <div class="hostRoom">
-        <div class="code">Room Code</div>
-        <div id='roomID'>------</div>
-	<button onclick='startGame()'>Start Game</button>
-      </div>
-      <div id='playercount'></div>
-      <div class="playerDisplay" id='playerlist'>
-      <!--
-        <div class="player">Aaron</div>
-        <div class="player">Seth</div>
-        <div class="player">Seth</div>
-        <div class="player">Seth</div>
-        <div class="player">Seth</div>
-        <div class="player">Seth</div>
-        <div class="player">Seth</div>
-        <div class="player">Seth</div>
-        <div class="player">Seth</div>
-        <div class="player">Seth</div>
-        <div class="player">Seth</div>
-        <div class="player">Seth</div>
-        <div class="player">Seth</div>
-        <div class="player">Seth</div>
-      -->
-      </div>
-    </div>
+/* LeaderBoard */
+/* Host Game Button */
+#initial {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px 5px;
+  border-radius: 4px;
+}
+#initial button {
+  color: white;
+  background-color: red;
+  border: 1px solid red;
+  width: 250px;
+  font-size: 30px;
+}
+#initial button:hover {
+  background-color: orangered;
+  border: 1px solid orangered;
+}
     
-    <!-- In Game QnA -->
-    <div id="q&a">
-      <div class="container">
-        <div class="question" id="QnA"><strong>Question:</strong><br> <para>What happened in the Willy Wonka Factory?</para> </div>
-        <div class="options">
-          <div class="option" id="a">Exploded</div>
-          <div class="option" id="b">Burned</div>
-          <div class="option" id="c">Grew legs and walked away</div>
-          <div class="option" id="d">Dug a hole and barried itself</div>
-        </div>
-        <div class="timer">--</div>
-      </div>
-    </div>
     
-    <!-- LeaderBoard -->
-    <div id="leaderBoard" style="display:none;">
-      <div class="score">Soon to be a score menu</div>
-    </div>
-  </body>  
+/* Pre-Game Lobby */
+.hostRoom {
+  width: 100%;
+  background-color: red;
+  height: 10%;
+}
+#roomID {
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 100%;
+  width: 20%;
+}
+.hostRoom div {
+  display: inline-block;
+  text-align: right;
+  width: 80%;
+}
+.hostRoom div button {
+  height: 100%;
+  background-color: red;
+  border: 1px solid red;
+  color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.hostRoom div button:hover {
+  background-color: orangered;
+  border: 1px solid orangered;
+}
 
-  <style>
-    body {background-color: powderblue; overflow-x:hidden;}
+/* Player Lobby Display For Now. */
+.playerDisplay {
+  height: 86%;
+  width: 96%;
+  padding: 2%;
+  background-color: #f0f0f0;
+}
+.player {
+  font-size: 20px;
+  display: inline-block;
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 10px;
+  margin: 5px;
+}
     
-    /* LeaderBoard */
-    
-    /* Host Game Button */
-    #initial {
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      scale: 150%;
-      transform: translateX(-50%);
-      width: auto;
-      padding: 5px 5px;
-      border-radius: 4px;
-    }
-    
-    
-        /* Pre-Game Lobby */
-    .hostRoom {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 50%;
-      left: 25%;
-      background-color: #f0f0f0;
-      padding: 2px 2px;
-      border: 1px solid black;
-      border-radius: 8px;
-    }
-    .playerDisplay {
-      position: absolute;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      height: 75%;
-      width: 90%;
-      padding: 5px;
-      margin: 2.5%;
-      background-color: #f0f0f0;
-      border: 1px solid black;
-      border-radius: 16px;
-    }
-    /* Player Lobby Display For Now. */
-    .player {
-      height: 50px;
-      width: auto;
-      background-color: #f0f0f0;
-      text-align: center;
-      font-size: 200%;
-      padding: 6px;
-      border: 1px solid black;
-      border-radius: 8px;
-      margin: 5px;
-    }
-    
-    	/* In-Game Questions */
-     
-    .container {
-      position: relative;
-      top: 0px;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-    .question {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      overflow: wrap;
-      justify-content: center;
-      padding: 10px;
-      background-color: #f0f0f0;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-    }
-    .options {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 50px;
-    }
-    .option {
-      padding: 10px;
-      margin: 5px;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    .option:hover {
-      transform: scale(0.98);
-      cursor: pointer;
-    }
-    .timer {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 200%;
-      width: 30px;
-      height: 30px;
-      background-color: #f0f0f0;
-      padding: 5px 10px;
-      border: 1px solid black;
-      border-radius: 1000px;
-    } 
-  </style>
-</html>
+/* In-Game Questions 
+.container {
+  position: relative;
+  top: 0px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}*/
+.question {
+  width: 90%;
+  height: 8%;
+  text-align: center;
+  background-color: red;
+  color: white;
+  padding-top: 2%;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+.options {
+  width: 100%;
+  height: 90%;
+}
+.option {
+  display: inline-block;
+  background-color: #f0f0f0;
+  border: none;
+  width: 48%;
+  height: 48%;
+}
+#a, #b {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+#c, #d {
+  margin-bottom: 1%;
+}
+#a, #c {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+#c, #d {
+  margin-right: 1%;
+}
+</style>
 `;
 const initial = document.getElementById('initial');
 const lobby = document.getElementById('lobby');
 const qna = document.getElementById('q&a');
-const k = [initial, lobby, qna], swapMenu = e => {
+const leaderboard = document.getElementById('leaderboard');
+const k = [initial, lobby, qna, leaderboard], swapMenu = e => {
   for (let i = 0; i < k.length; i++) {
     k[i].style.display = e === i ? 'block' : 'none';
   }
