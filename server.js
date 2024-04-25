@@ -4,7 +4,7 @@ const wss = new ws.WebSocketServer({port: 443});
 
 const rooms = {};
 
-const k = [0,1,2,3,4,5,6,7,8,9,'a','b','c','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'], genId = () => {
+const k = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'], genId = () => {
   let o = '';
   for (let i = 0; i < 6; i++) o += k[Math.floor(Math.random()*k.length)];
   return o;
@@ -101,6 +101,7 @@ wss.on('connection', socket => {
   });
   socket.on('close', () => {
     if (!socket.id) return;
+    if (!rooms[socket.id]) return;
     if (socket === rooms[socket.id].host) {
       for (const s of rooms[socket.id].sockets) s.close();
       rooms[socket.id] = undefined;
