@@ -172,8 +172,9 @@ socket.onmessage = d => {
     document.getElementById('roomID').innerHTML = data.code;
     swapMenu(1)
   } else if (data.event === 'players') {
-    const a = data.names.reduce((a, c) => a+`<div class='player' onclick='kick("${c}")'>`+c+'</div>'); // can optimize for styling later
-    alert(a);
+    let a = '';
+    for (const name of data.names) a += `<div class='player' onclick='kick("${name}")'>${name}</div>`;
+    alert(JSON.stringify(a));
     document.getElementById('playerlist').innerHTML = a;
     document.getElementById('playercount').innerHTML = data.names.length+' Players';
   }
