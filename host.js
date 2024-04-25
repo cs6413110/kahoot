@@ -6,12 +6,12 @@ document.body.innerHTML += `
   </header>
   <body>
   	<!-- Host Game Button -->
-    <div id='initial'>
+    <div id='initial' style="visibility:hidden;">
       <button onclick='createGame()'>Host a Game</button>
     </div>
     
     <!-- Pre-Game Lobby -->
-    <div id="lobby">
+    <div id="lobby" style="visibility:hidden;">
       <div class="hostRoom">
         <div class="code">Room Code</div>
         <div id='roomID'>------</div>
@@ -23,7 +23,7 @@ document.body.innerHTML += `
     </div>
     
     <!-- In Game QnA -->
-    <div id="q&a" style="visibility:hidden;">
+    <div id="q&a" style="visibility:show;">
       <div class="container">
         <div class="question" id="QnA">Question: </div>
         <div class="options">
@@ -32,7 +32,7 @@ document.body.innerHTML += `
           <div class="option">Answer 3:</div>
           <div class="option">Answer 4:</div>
         </div>
-        <div class="timer">Timer: 00:00</div>
+        <div class="timer">00</div>
       </div>
     </div>
   </body>  
@@ -78,8 +78,10 @@ document.body.innerHTML += `
     }
     
     	/* In-Game Questions */
+     
     .container {
       position: relative;
+      top: 0px;
       height: 100vh;
       display: flex;
       flex-direction: column;
@@ -115,11 +117,13 @@ document.body.innerHTML += `
       position: absolute;
       top: 10px;
       right: 10px;
-      width: auto;
+      font-size: 200%;
+      width: 30px;
+      height: 30px;
       background-color: #f0f0f0;
       padding: 5px 10px;
       border: 1px solid black;
-      border-radius: 100px;
+      border-radius: 1000px;
     } 
   </style>
 </html>
