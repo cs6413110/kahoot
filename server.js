@@ -84,17 +84,18 @@ wss.on('connection', socket => {
     } else if (data.event === 'answer') {
       socket.answered = true;
       socket.lastScore = 0;
-      if (data.answer === room[socket.id].questions[room[socket.id].question].correct) {
-        socket.lastScore = (1-data.time/room[socket.id].time)*1000;
+      let room = rooms[socket.id];
+      if (data.answer === room.questions[room.question].correct) {
+        socket.lastScore = (1-data.time/room.time)*1000;
       } 
       socket.score += socket.lastScore;
       let allAnswered = true;
-      for (const socket of room[socket.id].sockets) if (room[socket.id].host !== socket && !socket.answered) allAnswered = false;
+      for (const socket of room.sockets) if (room.host !== socket && !socket.answered) allAnswered = false;
       if (allAnswered) {
-        rooms[socket.id].host.send({event: 'scoreboard', scores: getScoreboard(id)});
+        room.host.send({event: 'scoreboard', scores: getScoreboard(id)});
         let scores = getScores(socket.id);
-        for (const socket of rooms[socket.id].sockets) if (socket !== rooms[id].host) socket.send({event: 'score', score: socket.score}); // recent score included too
-        rooms[socket.id].timeout = setTimeout(() => gameNewQuestion(socket.id), 3000); // leaderboard phase
+        for (const socket of room.sockets) if (socket !== room.host) socket.send({event: 'score', score: socket.score}); // recent score included too
+        room.timeout = setTimeout(() => gameNewQuestion(socket.id), 3000); // leaderboard phase
       }
     }
   });
