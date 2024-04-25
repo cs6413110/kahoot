@@ -19,6 +19,22 @@ document.body.innerHTML += `
       </div>
       <div id='playercount'></div>
       <div class="playerDisplay" id='playerlist'>
+      <!--
+        <div class="player">Aaron</div>
+        <div class="player">Seth</div>
+        <div class="player">Seth</div>
+        <div class="player">Seth</div>
+        <div class="player">Seth</div>
+        <div class="player">Seth</div>
+        <div class="player">Seth</div>
+        <div class="player">Seth</div>
+        <div class="player">Seth</div>
+        <div class="player">Seth</div>
+        <div class="player">Seth</div>
+        <div class="player">Seth</div>
+        <div class="player">Seth</div>
+        <div class="player">Seth</div>
+      -->
       </div>
     </div>
     
@@ -35,10 +51,17 @@ document.body.innerHTML += `
         <div class="timer">--</div>
       </div>
     </div>
+    
+    <!-- LeaderBoard -->
+    <div id="leaderBoard">
+      <div class="score">Soon to be a score menu</div>
+    </div>
   </body>  
 
   <style>
     body {background-color: powderblue; overflow-x:hidden;}
+    
+    /* LeaderBoard */
     
     /* Host Game Button */
     #initial {
@@ -68,6 +91,9 @@ document.body.innerHTML += `
     }
     .playerDisplay {
       position: absolute;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
       height: 75%;
       width: 90%;
       padding: 5px;
@@ -78,14 +104,14 @@ document.body.innerHTML += `
     }
     /* Player Lobby Display For Now. */
     .player {
-      display: flex;
-      flex-direction: row;
-      height: 25px;
-      width: 40px;
+      height: 20px;
+      width: auto;
       background-color: #f0f0f0;
-      padding: 2px;
+      text-align: center;
+      padding: 6px;
       border: 1px solid black;
       border-radius: 8px;
+      margin: 5px;
     }
     
     	/* In-Game Questions */
