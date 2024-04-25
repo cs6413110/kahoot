@@ -31,7 +31,7 @@ document.body.innerHTML += `
 #stats {
   position: absolute;
   top: 0px;
-  right 0px;
+  right: 0px;
 }
 #stats * {
   display: inline-block;
