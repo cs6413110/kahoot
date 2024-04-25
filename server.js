@@ -30,17 +30,20 @@ const gameNewQuestion = id => {
     return;
   }
   let question = rooms[id].questions[rooms[id].question];
-  for (const socket of rooms[id].sockets) {
-    socket.lastScore = 0;
-    socket.answered = false;
-    socket.send({event: 'question', question: question.question, answers: question.answers});
-  }
+  rooms[id].host.socket.send({event: 'question', question: question.question, answers: question.answers});
+  rooms[id].questionTimer = setTimeout(() => {
+    for (const socket of rooms[id].sockets) if (socket !== rooms[id].host) {
+      socket.lastScore = 0;
+      socket.answered = false;
+      socket.send({event: 'question', question: question.question, answers: question.answers});
+    }
+  }, 3000);
   rooms[id].timeout = setTimeout(() => {
     rooms[id].host.send({event: 'scoreboard', scores: getScoreboard(id)});
     let scores = getScores(id);
     for (const socket of rooms[id].sockets) if (socket !== rooms[id].host) socket.send({event: 'score', score: socket.score, lastScore: socket.lastScore}); // recent score included too
     rooms[id].timeout = setTimeout(() => gameNewQuestion(id), 5000); // leaderboard phase
-  }, rooms[id].time || 10000);
+  }, Math.max(10000, rooms[id].time || 10000)+3000);
 }
 
 const getPlayers = id => {
@@ -109,12 +112,13 @@ wss.on('connection', socket => {
     if (!rooms[socket.id]) return;
     if (socket === rooms[socket.id].host) {
       for (const s of rooms[socket.id].sockets) s.close();
+      clearTimeout(rooms[socket.id].timeout);
+      clearTimeout(rooms[socket.id].questionTimeout);
       rooms[socket.id] = undefined;
     } else {
       if (rooms[socket.id].sockets.includes(socket)) rooms[socket.id].sockets.splice(rooms[socket.id].sockets.indexOf(socket), 1);
       if (rooms[socket.id].sockets.length === 0 && rooms[socket.id].gamestate === 1) {
         rooms[socket.id].host.close();
-        rooms[socket.id] = undefined;
       } else {
         for (const s of rooms[socket.id].sockets) s.send({event: 'players', names: getPlayers(socket.id)});
       }
