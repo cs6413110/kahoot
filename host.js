@@ -23,7 +23,7 @@ document.body.innerHTML += `
     </div>
     
     <!-- In Game QnA -->
-    <div id="q&a">
+    <div id="q&a" style="visibility:hidden;">
       <div class="container">
         <div class="question" id="QnA">Question: </div>
         <div class="options">
@@ -38,7 +38,7 @@ document.body.innerHTML += `
   </body>  
 
   <style>
-  	body {background-color: powderblue;}
+  	body {background-color: powderblue; overflow-x:hidden;}
     
     /* Host Game Button */
     #initial {
@@ -68,7 +68,7 @@ document.body.innerHTML += `
     }
     .playerDisplay {
   	  position: absolute;
-      height: 50%;
+      height: 75%;
       width: 90%;
       padding: 5px;
       margin: 2.5%;
