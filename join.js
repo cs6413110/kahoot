@@ -1,10 +1,8 @@
 document.body.innerHTML += `
 <div id='join'>
-  <div id='align'>
-    <input id='username' placeholder='username' /><br>
-    <input id='code' placeholder='room code' /><br>
-    <button onclick='joinGame()'>Join</button>
-  </div>
+  <input id='username' placeholder='username' /><br>
+  <input id='code' placeholder='room code' /><br>
+  <button onclick='joinGame()'>Join</button>
 </div>
 <div id='waiting'>
   <h1>Waiting for other players</h1>
@@ -26,26 +24,22 @@ body {
   left: 0px;
   width: 100%;
   height: 100%;
-  justify-content: center;
-}
-#join div {
-  width: 250px;
   text-align: center;
-  margin-auto;
 }
-#join div button {
+#join button {
   color: white;
   border: none;
   background-color: powderblue;
+  font-size: 20px;
 }
 #join div button:hover {
   background-color: blue;
 }
-#join div input {
+#join input {
   width: 200px;
-  font-size: 30px;
+  font-size: 20px;
   font-family: Verdana;
-  border: none;
+  border: 1px solid black;
 }
 #waiting h1 {
   font-size: 100%;
