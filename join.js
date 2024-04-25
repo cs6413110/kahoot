@@ -10,10 +10,10 @@ document.body.innerHTML += `
   <h1>Waiting for other players</h1>
 </div>
 <div id='question'>
-  <button id='a' class='answer'>a</button>
-  <button id='b' class='answer'>b</button>
-  <button id='c' class='answer'>c</button>
-  <button id='d' class='answer'>d</button>
+  <button id='a' class='answer' onclick='answer(0)'>a</button>
+  <button id='b' class='answer' onclick='answer(1)'>b</button>
+  <button id='c' class='answer' onclick='answer(2)'>c</button>
+  <button id='d' class='answer' onclick='answer(3)'>d</button>
 </div>
 <style>
 * {
@@ -89,15 +89,22 @@ const socket = new WebSocket('ws://141.148.128.231:443'); // connect to server
 const game = {};
 socket._send = socket.send;
 socket.send = m => socket._send(JSON.stringify(m))
-socket.onopen = () => alert('Connected to server!');
 socket.onmessage = d => {
-  alert(d.data);
   const data = JSON.parse(d.data);
   if (data.event === 'players') {
     swapMenu(1);
+  } else if (data.event === 'question') {
+    swapMenu(2);
+    for (let i = 0; i < 4; i++) document.getElementById(['a', 'b', 'c', 'd'][i]).innerHTML = data.answers[i];
+    game.questionStart = Date.now();
   }
 }
 socket.onclose = () => alert('Disconnected from server! Please reload.');
+
+const answer = i => {
+  socket.send({event: 'answer', answer: i, time: Date.now()-game.questionStart});
+  swapMenu(1);
+}
 
 const joinGame = () => {
   game.username = document.getElementById('username').value;
