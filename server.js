@@ -80,6 +80,11 @@ wss.on('connection', socket => {
       if (socket === rooms[socket.id].host) {
         gameNewQuestion(socket.id);
       }
+    } else if (data.event === 'kick') {
+      if (socket === rooms[socket.id].host) {
+        let s = rooms[socket.id].sockets.find(s => s.username === data.name);
+        if (s) s.close();
+      }
     } else if (data.event === 'answer') {
       socket.answered = true;
       let room = rooms[socket.id];
