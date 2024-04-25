@@ -10,7 +10,7 @@ const k = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','
 
 const getScoreboard = id => {
   let scores = [];
-  for (const socket of rooms[id].sockets) scores.push([socket.username, socket.score]);
+  for (const socket of rooms[id].sockets) if (socket !== rooms[id].host) scores.push([socket.username, socket.score]);
   scores.sort((a, b) => a[1]-b[1]);
   return scores;
 }
@@ -77,7 +77,7 @@ wss.on('connection', socket => {
       socket.id = roomId;
       socket.send({event: 'code', code: roomId});
     } else if (data.event === 'start') {
-      if (socket === rooms[socket.id].host) { 
+      if (socket === rooms[socket.id].host) {
         gameNewQuestion(socket.id);
       }
     } else if (data.event === 'answer') {
@@ -85,7 +85,7 @@ wss.on('connection', socket => {
       let room = rooms[socket.id];
       if (!room) return;
       if (data.answer == room.questions[room.question].correct) {
-        socket.lastScore = (1-data.time/room.time)*1000;
+        socket.lastScore = Math.round((1-data.time/room.time)*1000);
       } 
       socket.score += socket.lastScore;
       let allAnswered = true;
