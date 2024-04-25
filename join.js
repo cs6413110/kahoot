@@ -28,7 +28,15 @@ document.body.innerHTML += `
   padding: 0;
   font-family: Verdana;
 }
-#join, #waiting, #question {
+#stats {
+  position: absolute;
+  top: 0px;
+  right 0px;
+}
+#stats * {
+  display: inline-block;
+}
+#join, #waiting, #question, #status {
   width: 100%;
   height: 100%;
   text-align: center;
@@ -80,6 +88,12 @@ document.body.innerHTML += `
   height: 45.5%;
   display: inline-block;
   padding: 0;
+}
+#points {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>
 `;
