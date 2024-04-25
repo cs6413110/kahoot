@@ -4,7 +4,7 @@ document.body.innerHTML += `
   <strong id='score'></strong>
 </div>
 <div id='join'>
-  <div id='center' style="scale:200%;">
+  <div id='center'>
     <input id='username' placeholder='username' /><br>
     <input id='code' placeholder='room code' /><br>
     <button onclick='joinGame()'>Join</button>
@@ -13,7 +13,7 @@ document.body.innerHTML += `
 <div id='waiting'>
   <h1>Waiting for other players</h1>
 </div>
-<div id='question' style="overflow:hidden;">
+<div id='question'>
   <button id='a' class='answer' onclick='answer(0)'>a</button>
   <button id='b' class='answer' onclick='answer(1)'>b</button>
   <button id='c' class='answer' onclick='answer(2)'>c</button>
@@ -43,7 +43,7 @@ document.body.innerHTML += `
 }
 #center {
   position: absolute;
-  width: 250px;
+  width: 500px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -51,7 +51,7 @@ document.body.innerHTML += `
 #join div button {
   background-color: blue;
   color: white;
-  width: 150px;
+  width: 300px;
   font-size: 15px;
   border: 1px solid blue;
 }
