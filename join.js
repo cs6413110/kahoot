@@ -21,7 +21,7 @@ document.body.innerHTML += `
   padding: 0;
   font-family: Verdana;
 }
-#join, #waiting {
+#join, #waiting, #question {
   width: 100%;
   height: 100%;
   text-align: center;
@@ -52,11 +52,27 @@ document.body.innerHTML += `
   left: 50%;
   transform: translate(-50%, -50%);
 }
+#a, #b {
+  margin-top: 3%;
+  margin-bottom: 1.5%;
+}
+#c, #d {
+  margin-bottom: 3%;
+  margin-top: 1.5%;
+}
+#a, #c {
+  margin-left: 3%;
+  margin-right: 1.5%;
+}
+#b, #d {
+  margin-right: 3%;
+  margin-right: 1.5%;
+}
 .answer {
-  width: 45%;
-  height: 45%;
-  margin: 2%;
+  width: 45.5%;
+  height: 45.5%;
   display: inline-block;
+  padding: 0;
 }
 </style>
 `;
