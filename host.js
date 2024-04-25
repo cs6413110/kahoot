@@ -181,6 +181,9 @@ socket.onclose = () => alert('Disconnected from server! Please reload.');
 
 const createGame = () => socket.send({event: 'host', questions: JSON.parse(prompt('Input JSON data for game: ')), time: Number(prompt('Time per question(in seconds)?'))*1000});
 const startGame = () => socket.send({event: 'start'});
-const kick = name => socket.send({event: 'kick', name});
+const kick = name => {
+  alert('kicking '+name);
+  socket.send({event: 'kick', name});
+}
 
 
