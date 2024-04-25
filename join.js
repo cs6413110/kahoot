@@ -13,7 +13,7 @@ document.body.innerHTML += `
 <div id='waiting'>
   <h1>Waiting for other players</h1>
 </div>
-<div id='question'>
+<div id='question' style="overflow:hidden;">
   <button id='a' class='answer' onclick='answer(0)'>a</button>
   <button id='b' class='answer' onclick='answer(1)'>b</button>
   <button id='c' class='answer' onclick='answer(2)'>c</button>
