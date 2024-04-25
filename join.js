@@ -1,48 +1,62 @@
 document.body.innerHTML += `
-<div id='join'>
-  <input id='username' placeholder='username' /><br>
-  <input id='code' placeholder='room code' /><br>
-  <button onclick='joinGame()'>Join</button>
+<div id='join' style='display: none;'>
+  <div id='center'>
+    <input id='username' placeholder='username' /><br>
+    <input id='code' placeholder='room code' /><br>
+    <button onclick='joinGame()'>Join</button>
+  </div>
 </div>
-<div id='waiting'>
+<div id='waiting' style='display: none'>
   <h1>Waiting for other players</h1>
 </div>
 <div id='question'>
-  <button>a</button>
-  <button>b</button>
-  <button>c</button>
-  <button>d</button>
+  <button id='a' class='answer'>a</button>
+  <button id='b' class='answer'>b</button>
+  <button id='c' class='answer'>c</button>
+  <button id='d' class='answer'>d</button>
 </div>
 <style>
-body {
-  margin: 0px;
-  padding: 0px;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana;
 }
 #join, #waiting {
-  position: relative;
-  top: 0px;
-  left: 0px;
   width: 100%;
   height: 100%;
   text-align: center;
 }
-#join button {
-  color: white;
-  border: none;
-  background-color: powderblue;
-  font-size: 20px;
+#center {
+  position: absolute;
+  width: 250px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-#join div button:hover {
+#join div button {
   background-color: blue;
+  color: white;
+  width: 150px;
+  font-size: 15px;
+  border: 1px solid blue;
 }
-#join input {
-  width: 200px;
-  font-size: 20px;
-  font-family: Verdana;
-  border: 1px solid black;
+#join div input {
+  margin-bottom: 10px;
+  width: 150px;
+  font-size: 15px;
 }
 #waiting h1 {
-  font-size: 100%;
+  font-size: 300%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.answer {
+  width: 45%;
+  height: 45%;
+  margin: 2%;
+  display: inline-block;
 }
 </style>
 `;
