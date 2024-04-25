@@ -1,4 +1,8 @@
 document.body.innerHTML += `
+<div id='stats'>
+  <p id='name'></p>
+  <strong id='score'></strong>
+</div>
 <div id='join'>
   <div id='center'>
     <input id='username' placeholder='username' /><br>
@@ -14,6 +18,9 @@ document.body.innerHTML += `
   <button id='b' class='answer' onclick='answer(1)'>b</button>
   <button id='c' class='answer' onclick='answer(2)'>c</button>
   <button id='d' class='answer' onclick='answer(3)'>d</button>
+</div>
+<div id='status'>
+  <p id='points'></p>
 </div>
 <style>
 * {
@@ -79,7 +86,8 @@ document.body.innerHTML += `
 const join = document.getElementById('join');
 const wait = document.getElementById('waiting');
 const question = document.getElementById('question');
-const k = [join, wait, question], swapMenu = e => {
+const status = document.getElementById('status');
+const k = [join, wait, question, status], swapMenu = e => {
   for (let i = 0; i < k.length; i++) {
     k[i].style.display = e === i ? 'block' : 'none';
   }
@@ -97,6 +105,11 @@ socket.onmessage = d => {
     swapMenu(2);
     for (let i = 0; i < 4; i++) document.getElementById(['a', 'b', 'c', 'd'][i]).innerHTML = data.answers[i];
     game.questionStart = Date.now();
+  } else if (data.event === 'score') {
+    swapMenu(3);
+    status.style.backgroundColor = data.lastScore === 0 ? 'red' : 'green';
+    document.getElementById('points').innerHTML = '+'+data.lastScore+' points';
+    document.getElementById('score').innerHTML = data.score+' points';
   } else if (data.event === 'error') alert(data.message);
 }
 socket.onclose = () => alert('Disconnected from server! Please reload.');
@@ -107,7 +120,7 @@ const answer = i => {
 }
 
 const joinGame = () => {
-  game.username = document.getElementById('username').value;
+  document.getElementById('name').innerHTML = game.username = document.getElementById('username').value;
   game.code = document.getElementById('code').value;
   socket.send({event: 'join', username: game.username, id: game.code}); 
 }
