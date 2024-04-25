@@ -1,14 +1,15 @@
 document.body.innerHTML += `
 <title>Kahooty Rip-off</title>
 <div id='initial'>
-  <button onclick='createGame()'>Host a Game</button>
+  <button onclick='createGame()' class="hover pointer">Host a Game</button>
 </div>
 <div id='lobby'>
   <div class='hostRoom'>
     <span id='playercount'>0 Players</span> 
     <span id='roomID'>XXXXXX</span>
-    <div><button onclick='startGame()'>Start Game</button></div>
+    <div><button onclick='startGame()' class="pointer">Start Game</button></div>
   </div>
+  <div class="line"></div>
   <div class='playerDisplay' id='playerlist'></div>
 </div>
 <div id='q&a'>
@@ -56,6 +57,8 @@ document.body.innerHTML += `
     
     
 /* Pre-Game Lobby */
+.pointer:hover{cursor: pointer;}
+.hover:hover{transform: scale(1.2);}
 .hostRoom {
   width: 100%;
   background-color: red;
@@ -96,10 +99,26 @@ document.body.innerHTML += `
 .player {
   font-size: 20px;
   display: inline-block;
-  background-color: #f8f8f8;
+  background-color: #ee90906e;
   text-align: center;
   padding: 10px;
   margin: 5px;
+}
+.player:hover {
+  transform: scale(1.07);
+  cursor: pointer;
+}
+.line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  transform: rotate(-45deg);
+  transform-origin: top left;
+  transition: transform 0.3s;
+  pointer-events: none;
 }
     
 /* In-Game Questions 
