@@ -94,6 +94,8 @@ document.body.innerHTML += `
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: white;
+  font-family: 20px;
 }
 </style>
 `;
@@ -117,10 +119,14 @@ socket.onmessage = d => {
     swapMenu(1);
   } else if (data.event === 'question') {
     swapMenu(2);
+    document.getElementById('points').style.color = 'black';
+    document.getElementById('name').style.color = 'black';
     for (let i = 0; i < 4; i++) document.getElementById(['a', 'b', 'c', 'd'][i]).innerHTML = data.answers[i];
     game.questionStart = Date.now();
   } else if (data.event === 'score') {
     swapMenu(3);
+    document.getElementById('points').style.color = 'white';
+    document.getElementById('name').style.color = 'white';
     status.style.backgroundColor = data.lastScore === 0 ? 'red' : 'green';
     document.getElementById('points').innerHTML = '+'+data.lastScore+' points';
     document.getElementById('score').innerHTML = data.score+' points';
