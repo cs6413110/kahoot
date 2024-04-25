@@ -5,32 +5,20 @@ document.body.innerHTML += `
 </div>
 <div id='lobby'>
   <div class='hostRoom'>
+    <span id='playercount'>0 Players</span> 
     <span id='roomID'>XXXXXX</span>
     <div><button onclick='startGame()'>Start Game</button></div>
   </div>
-  <div id='playercount'></div>
-  <div class='playerDisplay' id='playerlist'>
-    <div class='player'>Aaron</div>
-    <div class='player'>Seth</div>
-    <div class='player'>Aaron</div>
-    <div class='player'>Seth</div><div class='player'>Aaron</div>
-    <div class='player'>Seth</div><div class='player'>Aaron</div>
-    <div class='player'>Seth</div><div class='player'>Aaron</div>
-    <div class='player'>Seth</div><div class='player'>Aaron</div>
-    <div class='player'>Seth</div><div class='player'>Aaron</div>
-    <div class='player'>Seth</div><div class='player'>Aaron</div>
-    <div class='player'>Seth</div><div class='player'>Aaron</div>
-    <div class='player'>Seth</div>
-  </div>
+  <div class='playerDisplay' id='playerlist'></div>
 </div>
 <div id='q&a'>
   <div class='container'>
-    <div class='question' id='QnA'>What happened in the Willy Wonka Factory?</div>
+    <div class='question' id='QnA'></div>
     <div class='options'>
-      <button class='option' id='a'>Exploded</button>
-      <button class='option' id='b'>Burned</button>
-      <button class='option' id='c'>Grew legs and walked away</button>
-      <button class='option' id='d'>Dug a hole and buried itself</button>
+      <button class='option' id='a'></button>
+      <button class='option' id='b'></button>
+      <button class='option' id='c'></button>
+      <button class='option' id='d'></button>
     </div>
   </div>
 </div>
@@ -73,7 +61,7 @@ document.body.innerHTML += `
   background-color: red;
   height: 10%;
 }
-#roomID {
+#roomID, #playercount {
   color: white;
   padding-left: 20px;
   padding-right: 20px;
@@ -184,21 +172,15 @@ socket.onmessage = d => {
     document.getElementById('roomID').innerHTML = data.code;
     swapMenu(1)
   } else if (data.event === 'players') {
-    const a = data.names.reduce((a, c) => a+'<br>'+c); // can optimize for styling later
+    const a = data.names.reduce((a, c) => a+`<div class='player' onclick='kick("${c}")'>`+c+'</div>); // can optimize for styling later
     document.getElementById('playerlist').innerHTML = a;
     document.getElementById('playercount').innerHTML = data.names.length+' Players';
   }
 }
 socket.onclose = () => alert('Disconnected from server! Please reload.');
 
-const createGame = () => {
-  socket.send({event: 'host', questions: JSON.parse(prompt('Input JSON data for game: ')), time: Number(prompt('Time per question(in seconds)?'))*1000});
-  /*
-  JSON format for questions:
-  [{question: '', answers: ['a', 'b', 'c', 'd'], correct: 0(a), time: 30}]
-  */
-}
-
+const createGame = () => socket.send({event: 'host', questions: JSON.parse(prompt('Input JSON data for game: ')), time: Number(prompt('Time per question(in seconds)?'))*1000});
 const startGame = () => socket.send({event: 'start'});
+const kick = name => socket.send({event: 'kick', name});
 
 
