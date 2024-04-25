@@ -84,7 +84,7 @@ wss.on('connection', socket => {
       socket.lastScore = 0;
       let room = rooms[socket.id];
       if (!room) return;
-      if (data.answer === room.questions[room.question].correct) {
+      if (data.answer == room.questions[room.question].correct) {
         socket.lastScore = (1-data.time/room.time)*1000;
       } 
       socket.score += socket.lastScore;
