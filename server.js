@@ -30,7 +30,7 @@ const gameNewQuestion = id => {
     return;
   }
   let question = rooms[id].questions[rooms[id].question];
-  rooms[id].host.socket.send({event: 'question', question: question.question, answers: question.answers});
+  rooms[id].host.send({event: 'question', question: question.question, answers: question.answers});
   rooms[id].questionTimer = setTimeout(() => {
     for (const socket of rooms[id].sockets) if (socket !== rooms[id].host) {
       socket.lastScore = 0;
