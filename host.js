@@ -53,7 +53,7 @@ document.body.innerHTML += `
     </div>
     
     <!-- LeaderBoard -->
-    <div id="leaderBoard">
+    <div id="leaderBoard" style="display:none;">
       <div class="score">Soon to be a score menu</div>
     </div>
   </body>  
@@ -104,10 +104,11 @@ document.body.innerHTML += `
     }
     /* Player Lobby Display For Now. */
     .player {
-      height: 20px;
+      height: 50px;
       width: auto;
       background-color: #f0f0f0;
       text-align: center;
+      font-size: 200%;
       padding: 6px;
       border: 1px solid black;
       border-radius: 8px;
