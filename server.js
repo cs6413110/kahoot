@@ -115,6 +115,8 @@ wss.on('connection', socket => {
       if (rooms[socket.id].sockets.length === 0 && rooms[socket.id].gamestate === 1) {
         rooms[socket.id].host.close();
         rooms[socket.id] = undefined;
+      } else {
+        for (const s of rooms[data.id].sockets) s.send({event: 'players', names: getPlayers(data.id)});
       }
     }
   });
