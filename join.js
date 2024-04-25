@@ -4,7 +4,7 @@ document.body.innerHTML += `
   <strong id='score'></strong>
 </div>
 <div id='join'>
-  <div id='center'>
+  <div id='center' style="scale:200%;">
     <input id='username' placeholder='username' /><br>
     <input id='code' placeholder='room code' /><br>
     <button onclick='joinGame()'>Join</button>
