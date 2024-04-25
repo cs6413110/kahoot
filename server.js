@@ -116,7 +116,7 @@ wss.on('connection', socket => {
         rooms[socket.id].host.close();
         rooms[socket.id] = undefined;
       } else {
-        for (const s of rooms[data.id].sockets) s.send({event: 'players', names: getPlayers(data.id)});
+        for (const s of rooms[socket.id].sockets) s.send({event: 'players', names: getPlayers(socket.id)});
       }
     }
   });
