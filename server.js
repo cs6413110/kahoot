@@ -39,7 +39,7 @@ const gameNewQuestion = id => {
     rooms[id].host.send({event: 'scoreboard', scores: getScoreboard(id)});
     let scores = getScores(id);
     for (const socket of rooms[id].sockets) if (socket !== rooms[id].host) socket.send({event: 'score', score: socket.score, lastScore: socket.lastScore}); // recent score included too
-    rooms[id].timeout = setTimeout(() => gameNewQuestion(id), 3000); // leaderboard phase
+    rooms[id].timeout = setTimeout(() => gameNewQuestion(id), 5000); // leaderboard phase
   }, rooms[id].time || 10000);
 }
 
@@ -95,7 +95,7 @@ wss.on('connection', socket => {
         let scores = getScores(socket.id);
         for (const socket of room.sockets) if (socket !== room.host) socket.send({event: 'score', score: socket.score, lastScore: socket.lastScore}); // recent score included too
         clearTimeout(room.timeout);
-        room.timeout = setTimeout(() => gameNewQuestion(socket.id), 3000); // leaderboard phase
+        room.timeout = setTimeout(() => gameNewQuestion(socket.id), 5000); // leaderboard phase
       }
     }
   });
