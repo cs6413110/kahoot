@@ -81,7 +81,7 @@ const wait = document.getElementById('waiting');
 const question = document.getElementById('question');
 const k = [join, wait, question], swapMenu = e => {
   for (let i = 0; i < k.length; i++) {
-    k[i].style.visibility = e === i ? 'visible' : 'hidden';
+    k[i].style.display = e === i ? 'block' : 'none';
   }
 }
 swapMenu(0);
