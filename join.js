@@ -1,8 +1,10 @@
 document.body.innerHTML += `
 <div id='join'>
-  <input id='username' placeholder='username' />
-  <input id='code' placeholder='room code' />
-  <button onclick='joinGame()'>Join</button>
+  <div id='align'>
+    <input id='username' placeholder='username' /><br>
+    <input id='code' placeholder='room code' /><br>
+    <button onclick='joinGame()'>Join</button>
+  </div>
 </div>
 <div id='waiting'>
   <h1>Waiting for other players</h1>
@@ -13,6 +15,42 @@ document.body.innerHTML += `
   <button>c</button>
   <button>d</button>
 </div>
+<style>
+body {
+  margin: 0px;
+  padding: 0px;
+}
+#join, #waiting {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+#join div {
+  width: 250px;
+  text-align: center;
+  margin-auto;
+}
+#join div button {
+  color: white;
+  border: none;
+  background-color: powderblue;
+}
+#join div button:hover {
+  background-color: blue;
+}
+#join div input {
+  width: 200px;
+  font-size: 30px;
+  font-family: Verdana;
+  border: none;
+}
+#waiting h1 {
+  font-size: 100%;
+}
+</style>
 `;
 const join = document.getElementById('join');
 const wait = document.getElementById('waiting');
@@ -22,7 +60,7 @@ const k = [join, wait, question], swapMenu = e => {
     k[i].style.visibility = e === i ? 'visible' : 'hidden';
   }
 }
-swapMenu(0)
+swapMenu(0);
 const socket = new WebSocket('ws://141.148.128.231:443'); // connect to server
 const game = {};
 socket._send = socket.send;
