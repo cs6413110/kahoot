@@ -1,12 +1,12 @@
 document.body.innerHTML += `
-<div id='join' style='display: none;'>
+<div id='join'>
   <div id='center'>
     <input id='username' placeholder='username' /><br>
     <input id='code' placeholder='room code' /><br>
     <button onclick='joinGame()'>Join</button>
   </div>
 </div>
-<div id='waiting' style='display: none'>
+<div id='waiting'>
   <h1>Waiting for other players</h1>
 </div>
 <div id='question'>
