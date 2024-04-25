@@ -6,12 +6,12 @@ document.body.innerHTML += `
   </header>
   <body>
   	<!-- Host Game Button -->
-    <div id='initial' style="display:none;">
+    <div id='initial'>
       <button onclick='createGame()'>Host a Game</button>
     </div>
     
     <!-- Pre-Game Lobby -->
-    <div id="lobby" style="display:none;">
+    <div id="lobby">
       <div class="hostRoom">
         <div class="code">Room Code</div>
         <div id='roomID'>------</div>
@@ -24,7 +24,7 @@ document.body.innerHTML += `
     
     <!-- In Game QnA -->
     <div id="q&a">
-      <div class="container" style="display:show;">
+      <div class="container">
         <div class="question" id="QnA"><strong>Question:</strong><br> <para>What happened in the Willy Wonka Factory?</para> </div>
         <div class="options">
           <div class="option" id="a">Exploded</div>
