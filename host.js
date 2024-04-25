@@ -133,7 +133,7 @@ const lobby = document.getElementById('lobby');
 const qna = document.getElementById('q&a');
 const k = [initial, lobby, qna], swapMenu = e => {
   for (let i = 0; i < k.length; i++) {
-    k[i].style.visibility = e === i ? 'visible' : 'hidden';
+    k[i].style.display = e === i ? 'block' : 'none';
   }
 }
 swapMenu(0);
