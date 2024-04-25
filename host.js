@@ -6,12 +6,12 @@ document.body.innerHTML += `
   </header>
   <body>
   	<!-- Host Game Button -->
-    <div id='initial'>
+    <div id='initial' style="display:none;">
       <button onclick='createGame()'>Host a Game</button>
     </div>
     
     <!-- Pre-Game Lobby -->
-    <div id="lobby">
+    <div id="lobby" style="display:none;">
       <div class="hostRoom">
         <div class="code">Room Code</div>
         <div id='roomID'>------</div>
@@ -24,15 +24,15 @@ document.body.innerHTML += `
     
     <!-- In Game QnA -->
     <div id="q&a">
-      <div class="container">
-        <div class="question" id="QnA">Question: </div>
+      <div class="container" style="display:show;">
+        <div class="question" id="QnA"><strong>Question:</strong><br> <para>What happened in the Willy Wonka Factory?</para> </div>
         <div class="options">
-          <div class="option">Answer 1:</div>
-          <div class="option">Answer 2:</div>
-          <div class="option">Answer 3:</div>
-          <div class="option">Answer 4:</div>
+          <div class="option" id="a">Exploded</div>
+          <div class="option" id="b">Burned</div>
+          <div class="option" id="c">Grew legs and walked away</div>
+          <div class="option" id="d">Dug a hole and barried itself</div>
         </div>
-        <div class="timer">00</div>
+        <div class="timer">--</div>
       </div>
     </div>
   </body>  
@@ -103,6 +103,8 @@ document.body.innerHTML += `
       top: 10px;
       left: 50%;
       transform: translateX(-50%);
+      overflow: wrap;
+      justify-content: center;
       padding: 10px;
       background-color: #f0f0f0;
       border: 2px solid #ccc;
