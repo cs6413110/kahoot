@@ -97,7 +97,7 @@ socket.onmessage = d => {
     swapMenu(2);
     for (let i = 0; i < 4; i++) document.getElementById(['a', 'b', 'c', 'd'][i]).innerHTML = data.answers[i];
     game.questionStart = Date.now();
-  }
+  } else if (data.event === 'error') alert(data.message);
 }
 socket.onclose = () => alert('Disconnected from server! Please reload.');
 
