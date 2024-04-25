@@ -173,6 +173,7 @@ socket.onmessage = d => {
     swapMenu(1)
   } else if (data.event === 'players') {
     const a = data.names.reduce((a, c) => a+`<div class='player' onclick='kick("${c}")'>`+c+'</div>'); // can optimize for styling later
+    alert(a);
     document.getElementById('playerlist').innerHTML = a;
     document.getElementById('playercount').innerHTML = data.names.length+' Players';
   }
