@@ -3,15 +3,25 @@ document.body.innerHTML += `
   <p id='name'></p>
   <strong id='score'></strong>
 </div>
+<div class="title">
+  <div class='letter'>C</div>
+  <div class='letter'>o</div>
+  <div class='letter'>o</div>
+  <div class='letter'>l</div>
+  <div class='letter'>h</div>
+  <div class='letter'>o</div>
+  <div class='letter'>o</div>
+  <div class='letter'>o</div>
+</div>
 <div id='join'>
   <div id='center'>
     <input id='username' placeholder='username' /><br>
     <input id='code' placeholder='room code' /><br>
-    <button onclick='joinGame()'>Join</button>
+    <button onclick='joinGame()' class='joinbutton'>Join</button>
   </div>
 </div>
 <div id='waiting'>
-  <h1>Waiting for other players</h1>
+  <h1 style="display: none;">Waiting for other players</h1>
 </div>
 <div id='question'>
   <button id='a' class='answer' onclick='answer(0)'>a</button>
@@ -27,6 +37,35 @@ document.body.innerHTML += `
   margin: 0;
   padding: 0;
   font-family: Verdana;
+}
+.title{
+  position: absolute;
+  width: auto;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  flex-direction: row;
+}
+.letter {
+  display: inline-block;
+  font-size: 200%;
+  margin: 10px;
+  padding: 8px 15px;
+  background-color: blue;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(5, 5, 5, 5);
+}
+.letter:hover {
+  transform: scale(1.1);
+  transition: transform 0.1s ease-in-out;
+  cursor: cell;
+}
+.joinbutton{transition: transform 0.3s ease-in-out;}
+.joinbutton:hover {
+  transform: scale(1.2);
+  cursor: pointer;
 }
 #stats {
   position: absolute;
