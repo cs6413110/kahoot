@@ -1,5 +1,5 @@
 document.body.innerHTML += `
-<title>Kahooty Rip-off</title>
+<title>Coolhoot</title>
 <div id='initial'>
   <button onclick='createGame()' class="hover pointer">Host a Game</button>
 </div>
@@ -110,6 +110,7 @@ document.body.innerHTML += `
   cursor: pointer;
 }
 .line {
+  display: none; /* idk what this is??? it was just adding x overflow so turned it off */
   position: absolute;
   top: 0;
   left: 0;
