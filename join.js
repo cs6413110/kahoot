@@ -190,7 +190,7 @@ socket.onmessage = d => {
   } else if (data.event === 'gameover') {
     swapMenu(1);
     document.getElementById('wait').innerHTML = 'Game Over!';
-    document.getElementById('gameoverscore').innerHTML = 'You scored '+document.getElementById('score').innerHTML;
+    document.getElementById('gameoverscore').innerHTML = 'You scored '+data.score;
   } else if (data.event === 'error') alert(data.message);
 }
 socket.onclose = () => alert('Disconnected from server! Please reload.');
