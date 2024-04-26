@@ -150,9 +150,18 @@ document.body.innerHTML += `
   display: inline-block;
   background-color: #f0f0f0;
   border: none;
+  box-shadow: .1px .1px 20px .1px rgba(1, 1, 1, 1);
   width: 48%;
   height: 48%;
 }
+#a{background-color:red;color:#fff;}
+#b{background-color:blue;color:#fff;}
+#c{background-color:orange;color:#fff;}
+#d{background-color:green;color:#fff;}
+#a, #b, #c, #d:hover{
+cursor: pointer;
+
+} 
 #a, #b {
   margin-top: 1%;
   margin-bottom: 1%;
