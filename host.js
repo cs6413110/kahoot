@@ -216,7 +216,9 @@ socket.onmessage = d => {
     let a = '';
     for (const score of data.scores) a += `<div class='player'>#${(data.scores.indexOf(score)+1)}) ${score[0]} --- ${score[1]}</div><br>`; // class can be changed, just tryna use pre-existing styles
     document.getElementById('leaderboard').innerHTML = a;
-  } else if (data.event === 'gameover') {} // nothing for now.
+  } else if (data.event === 'gameover') {
+    document.getElementById('leaderboard').innerHTML =  '<div><h1>Game Over!</h1></div>'+document.getElementById('leaderboard').innerHTML;
+  }
 }
 socket.onclose = () => alert('Disconnected from server! Please reload.');
 
