@@ -144,6 +144,7 @@ document.body.innerHTML += `
   width: 45.5%;
   height: 45.5%;
   display: inline-block;
+  font-size: 50px;
   padding: 0;
 }
 #points {
