@@ -22,7 +22,8 @@ document.body.innerHTML += `
   </div>
 </div>
 <div id='waiting'>
-  <h1>Waiting for other players</h1>
+  <h1 id='wait'>Waiting for other players</h1>
+  <h2 id='gameoverscore'></h2>
 </div>
 <div id='question'>
   <button id='a' class='answer' onclick='answer(0)'>a</button>
@@ -186,6 +187,10 @@ socket.onmessage = d => {
     status.style.backgroundColor = data.lastScore === 0 ? 'red' : 'green';
     document.getElementById('points').innerHTML = '+'+data.lastScore+' points';
     document.getElementById('score').innerHTML = data.score+' points';
+  } else if (data.event === 'gameover') {
+    swapMenu(1);
+    document.getElementById('wait').innerHTML = 'Game Over!';
+    document.getElementById('gameoverscore').innerHTML = 'You scored '+document.getElementById('score').innerHTML;
   } else if (data.event === 'error') alert(data.message);
 }
 socket.onclose = () => alert('Disconnected from server! Please reload.');
