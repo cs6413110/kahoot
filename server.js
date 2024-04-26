@@ -11,7 +11,7 @@ const k = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','
 const getScoreboard = id => {
   let scores = [];
   for (const socket of rooms[id].sockets) if (socket !== rooms[id].host) scores.push([socket.username, socket.score]);
-  scores.sort((a, b) => a[1]-b[1]);
+  scores.sort((a, b) => b[1]-a[1]);
   return scores;
 }
 
