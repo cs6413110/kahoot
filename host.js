@@ -108,6 +108,8 @@ document.body.innerHTML += `
   transform: scale(1.07);
   transition: transform 0.1s ease-in-out;
   cursor: pointer;
+  text-decoration: line-through;
+  
 }
 .line {
   display: none; /* idk what this is??? it was just adding x overflow so turned it off */
