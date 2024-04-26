@@ -123,6 +123,21 @@ document.body.innerHTML += `
   margin-right: 3%;
   margin-right: 1.5%;
 }
+#a, #b, #c, #d {
+  box-shadow: .1px .1px 20px .1px rgba(1, 1, 1, 1);
+}
+#a {
+  background-color: red;
+}
+#b {
+  background-color: blue;
+}
+#c {
+  background-color: orange;
+}
+#d {
+  background-color: green;
+}
 .answer {
   width: 45.5%;
   height: 45.5%;
