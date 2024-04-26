@@ -11,7 +11,7 @@ document.body.innerHTML += `
   <div class='letter'>h</div>
   <div class='letter'>o</div>
   <div class='letter'>o</div>
-  <div class='letter'>o</div>
+  <div class='letter'>t</div>
 </div>
 <div id='join'>
   <div id='center'>
