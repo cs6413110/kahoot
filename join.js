@@ -1,4 +1,5 @@
 document.body.innerHTML += `
+<title>Coolhoot</title>
 <div id='stats'>
   <p id='name'></p>
   <strong id='score'></strong>
