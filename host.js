@@ -161,9 +161,11 @@ document.body.innerHTML += `
 #c{background-color:orange;color:#fff;}
 #d{background-color:green;color:#fff;}
 #a, #b, #c, #d:hover{
-cursor: pointer;
-
+  cursor: pointer;
 } 
+#a, #b, #c, #d {
+  font-size: 200%;
+}
 #a, #b {
   margin-top: 1%;
   margin-bottom: 1%;
