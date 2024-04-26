@@ -185,7 +185,6 @@ socket._send = socket.send;
 socket.send = m => socket._send(JSON.stringify(m))
 socket.onopen = () => alert('Connected to server!');
 socket.onmessage = d => {
-  alert(d.data);
   const data = JSON.parse(d.data);
   if (data.event === 'code') {
     game.code = data.code;
@@ -194,10 +193,17 @@ socket.onmessage = d => {
   } else if (data.event === 'players') {
     let a = '';
     for (const name of data.names) a += `<div class='player' onclick='kick("${name}")'>${name}</div>`;
-    alert(JSON.stringify(a));
     document.getElementById('playerlist').innerHTML = a;
     document.getElementById('playercount').innerHTML = data.names.length+' Players';
-  }
+  } else if (data.event === 'question') {
+    swapMenu(2);
+    document.getElementById('QnA').innerHTML = data.question;
+    for (let i = 0; i < 4; i++) document.getElementById(['a', 'b', 'c', 'd'][i]).innerHTML = data.answers[i];
+  } else if (data.event === 'scoreboard') {
+    let a = '';
+    for (const score of data.scores) a += `<div class='player'>#${(data.scores.indexOf(score)+1)}) ${score[0]} --- ${score[1]}</div><br>`; // class can be changed, just tryna use pre-existing styles
+    document.getElementById('leaderboard').innerHTML = a;
+  } else if (data.event === 'gameover') {} // nothing for now.
 }
 socket.onclose = () => alert('Disconnected from server! Please reload.');
 
