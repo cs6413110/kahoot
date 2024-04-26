@@ -201,6 +201,7 @@ socket.onmessage = d => {
     document.getElementById('QnA').innerHTML = data.question;
     for (let i = 0; i < 4; i++) document.getElementById(['a', 'b', 'c', 'd'][i]).innerHTML = data.answers[i];
   } else if (data.event === 'scoreboard') {
+    swapMenu(3);
     let a = '';
     for (const score of data.scores) a += `<div class='player'>#${(data.scores.indexOf(score)+1)}) ${score[0]} --- ${score[1]}</div><br>`; // class can be changed, just tryna use pre-existing styles
     document.getElementById('leaderboard').innerHTML = a;
