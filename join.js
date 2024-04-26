@@ -3,17 +3,17 @@ document.body.innerHTML += `
   <p id='name'></p>
   <strong id='score'></strong>
 </div>
-<div class="title">
-  <div class='letter'>C</div>
-  <div class='letter'>o</div>
-  <div class='letter'>o</div>
-  <div class='letter'>l</div>
-  <div class='letter'>h</div>
-  <div class='letter'>o</div>
-  <div class='letter'>o</div>
-  <div class='letter'>t</div>
-</div>
 <div id='join'>
+  <div class="title">
+    <div class='letter'>C</div>
+    <div class='letter'>o</div>
+    <div class='letter'>o</div>
+    <div class='letter'>l</div>
+    <div class='letter'>h</div>
+    <div class='letter'>o</div>
+    <div class='letter'>o</div>
+    <div class='letter'>t</div>
+  </div>
   <div id='center'>
     <input id='username' placeholder='username' /><br>
     <input id='code' placeholder='room code' /><br>
@@ -21,7 +21,7 @@ document.body.innerHTML += `
   </div>
 </div>
 <div id='waiting'>
-  <h1 style="display: none;">Waiting for other players</h1>
+  <h1>Waiting for other players</h1>
 </div>
 <div id='question'>
   <button id='a' class='answer' onclick='answer(0)'>a</button>
