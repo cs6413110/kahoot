@@ -58,7 +58,7 @@ document.body.innerHTML += `
     
 /* Pre-Game Lobby */
 .pointer:hover{cursor: pointer;}
-.hover:hover{transform: scale(1.2);}
+.hover:hover{transform: scale(1.2); transition: transform .1s ease-in-out;}
 .hostRoom {
   width: 100%;
   background-color: red;
@@ -106,6 +106,7 @@ document.body.innerHTML += `
 }
 .player:hover {
   transform: scale(1.07);
+  transition: transform 0.1s ease-in-out;
   cursor: pointer;
 }
 .line {
