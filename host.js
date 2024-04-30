@@ -186,9 +186,9 @@ const initial = document.getElementById('initial');
 const lobby = document.getElementById('lobby');
 const qna = document.getElementById('q&a');
 const leaderboard = document.getElementById('leaderboard');
-const l = new Audio('https://raw.githubusercontent.com/cs6413110/kahoot/lobby.mp3');
-const q = new Audio('https://raw.githubusercontent.com/cs6413110/kahoot/question.mp3');
-const g = new Audio('https://raw.githubusercontent.com/cs6413110/kahoot/gameover.mp3');
+const l = new Audio('https://raw.githubusercontent.com/cs6413110/kahoot/main/lobby.mp3');
+const q = new Audio('https://raw.githubusercontent.com/cs6413110/kahoot/main/question.mp3');
+const g = new Audio('https://raw.githubusercontent.com/cs6413110/kahoot/main/gameover.mp3');
 const s = [l, q, g];
 for (const a of s) a.loop = true;
 const stopMusic = () => {
