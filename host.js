@@ -192,7 +192,10 @@ const g = new Audio('https://raw.githubusercontent.com/cs6413110/kahoot/gameover
 const s = [l, q, g];
 for (const a of s) a.loop = true;
 const stopMusic = () => {
-  for (const a of s) a.stop();
+  for (const a of s) {
+    a.currentTime = 0;
+    a.pause();
+  }
 }
 const swapMusic = e => {
   stopMusic();
