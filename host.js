@@ -186,6 +186,18 @@ const initial = document.getElementById('initial');
 const lobby = document.getElementById('lobby');
 const qna = document.getElementById('q&a');
 const leaderboard = document.getElementById('leaderboard');
+const l = new Audio('https://raw.githubusercontent.com/cs6413110/kahoot/lobby.mp3');
+const q = new Audio('https://raw.githubusercontent.com/cs6413110/kahoot/question.mp3');
+const g = new Audio('https://raw.githubusercontent.com/cs6413110/kahoot/gameover.mp3');
+const s = [l, q, g];
+for (const a of s) a.loop = true;
+const stopMusic = () => {
+  for (const a of s) a.stop();
+}
+const swapMusic = e => {
+  stopMusic();
+  s[e].play();
+}
 const k = [initial, lobby, qna, leaderboard], swapMenu = e => {
   for (let i = 0; i < k.length; i++) {
     k[i].style.display = e === i ? 'block' : 'none';
@@ -203,22 +215,26 @@ socket.onmessage = d => {
   if (data.event === 'code') {
     game.code = data.code;
     document.getElementById('roomID').innerHTML = data.code;
-    swapMenu(1)
+    swapMenu(1);
+    swapMusic(0);
   } else if (data.event === 'players') {
     let a = '';
     for (const name of data.names) a += `<div class='player' onclick='kick("${name}")'>${name}</div>`;
     document.getElementById('playerlist').innerHTML = a;
     document.getElementById('playercount').innerHTML = data.names.length+' Players';
   } else if (data.event === 'question') {
+    swapMusic(1);
     swapMenu(2);
     document.getElementById('QnA').innerHTML = data.question;
     for (let i = 0; i < 4; i++) document.getElementById(['a', 'b', 'c', 'd'][i]).innerHTML = data.answers[i];
   } else if (data.event === 'scoreboard') {
+    stopMusic();
     swapMenu(3);
     let a = '';
     for (const score of data.scores) a += `<div class='player'>#${(data.scores.indexOf(score)+1)}) ${score[0]} --- ${score[1]}</div><br>`; // class can be changed, just tryna use pre-existing styles
     document.getElementById('leaderboard').innerHTML = a;
   } else if (data.event === 'gameover') {
+    swapMusic(2);
     document.getElementById('leaderboard').innerHTML =  '<div><h1>Game Over!</h1></div>'+document.getElementById('leaderboard').innerHTML;
   }
 }
