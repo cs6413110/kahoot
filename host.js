@@ -149,7 +149,7 @@ document.body.innerHTML += `
   border: none;
   margin: 0;
   padding: 0;
-  color: '#ffffff';
+  color: white;
   background-color: red;
 }
 .options {
