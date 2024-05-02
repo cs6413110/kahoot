@@ -136,7 +136,7 @@ document.body.innerHTML += `
 }*/
 .question {
   width: 90%;
-  height: 8%;
+  height: 18%;
   text-align: center;
   background-color: red;
   color: white;
@@ -147,7 +147,7 @@ document.body.innerHTML += `
 }
 .options {
   width: 100%;
-  height: 90%;
+  height: 80%;
 }
 .option {
   display: inline-block;
