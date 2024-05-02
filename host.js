@@ -140,7 +140,6 @@ document.body.innerHTML += `
   text-align: center;
   background-color: red;
   color: white;
-  padding-top: 2%;
   padding-right: 5%;
   padding-left: 5%;
 }
@@ -148,6 +147,8 @@ document.body.innerHTML += `
   height: 100%;
   font-size: 30px;
   border: none;
+  margin: 0;
+  padding: 0;
   background-color: red;
 }
 .options {
