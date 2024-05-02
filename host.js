@@ -14,7 +14,7 @@ document.body.innerHTML += `
 </div>
 <div id='q&a'>
   <div class='container'>
-    <div class='question' id='QnA'></div>
+    <div class='question'><button id='QnA'></button></div>
     <div class='options'>
       <button class='option' id='a'></button>
       <button class='option' id='b'></button>
@@ -140,10 +140,15 @@ document.body.innerHTML += `
   text-align: center;
   background-color: red;
   color: white;
-  font-size: 100%;
   padding-top: 2%;
   padding-right: 5%;
   padding-left: 5%;
+}
+#QnA {
+  height: 100%;
+  font-size: 30px;
+  border: none;
+  background-color: red;
 }
 .options {
   width: 100%;
