@@ -140,6 +140,7 @@ document.body.innerHTML += `
   text-align: center;
   background-color: red;
   color: white;
+  font-size: 100%;
   padding-top: 2%;
   padding-right: 5%;
   padding-left: 5%;
