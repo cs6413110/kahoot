@@ -24,7 +24,7 @@ document.body.innerHTML += `
   </div>
 </div>
 <div id='leaderboard'>
-  <div class="exitbutton">Exit</div>
+  <div class="exitbutton">End Game</div>
   <div class='score'></div>
 </div>
 <style>
@@ -36,18 +36,22 @@ document.body.innerHTML += `
     
 /* LeaderBoard */
 #roomID {
-  size: 200%;
+  font-size: 1%;
 }
 .exitbutton {
   position: absolute;
   top: 0;
+  text-align: center;
+  align-content: center;
+  font-size: 300%;
+  justify-content: ;
   width: 100%;
   height: 15%;
-  background-color: orangered;
+  background-color: red;
 }
 .exitbutton:hover {
-  cursor: pointer;
-  background-color: lighted;
+  cursor: cell;
+  background-color: lightred;
 }
 /* Host Game Button */
 #initial {
