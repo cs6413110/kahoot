@@ -24,6 +24,7 @@ document.body.innerHTML += `
   </div>
 </div>
 <div id='leaderboard'>
+  <div class="exitbutton">Exit</div>
   <div class='score'></div>
 </div>
 <style>
@@ -34,6 +35,9 @@ document.body.innerHTML += `
 }
     
 /* LeaderBoard */
+.exitbutton {
+  position: absolute;
+}
 /* Host Game Button */
 #initial {
   position: absolute;
@@ -172,7 +176,7 @@ document.body.innerHTML += `
   cursor: pointer;
 } 
 #a, #b, #c, #d {
-  font-size: 5%;
+  font-size: auto;
 }
 #a, #b {
   margin-top: 1%;
