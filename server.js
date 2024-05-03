@@ -108,6 +108,7 @@ wss.on('connection', socket => {
       if (socket !== rooms[socket.id].host) return;
       clearTimeout(rooms[socket.id].timeout);
       clearTimeout(rooms[socket.id].questionTimeout);
+      rooms[id].host.send({event: 'scoreboard', scores: getScoreboard(id)});
       for (const socket of rooms[socket.id].sockets) socket.send({event: 'gameover', score: socket.score});
       rooms[socket.id] = undefined;
     }
