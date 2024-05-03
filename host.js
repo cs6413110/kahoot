@@ -7,7 +7,7 @@ document.body.innerHTML += `
   <div class='hostRoom'>
     <span id='playercount'>0 Players</span> 
     <span id='roomID'>XXXXXX</span>
-    <div onclick='startGame()' class="pointer">Start Game</div>
+    <div><buttononclick='startGame()' class="pointer">Start Game</button></div>
   </div>
   <div class="line"></div>
   <div class='playerDisplay' id='playerlist'></div>
@@ -87,7 +87,7 @@ document.body.innerHTML += `
   color: white;
   padding-left: 20px;
   padding-right: 20px;
-  align-content: center;
+  verticle-align8: center;
   height: 100%;
   width: 20%;
 }
