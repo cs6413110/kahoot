@@ -93,7 +93,7 @@ document.body.innerHTML += `
   padding-right: 20px;
   verticle-align: center;
   height: 100%;
-  width: 20%;
+  width: 100%;
 }
 .hostRoom div {
   display: inline-block;
