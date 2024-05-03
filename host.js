@@ -38,6 +38,9 @@ document.body.innerHTML += `
 #roomID {
   font-size: 250%;
 }
+.start {
+  width: 100%;
+}
 .start:hover {
   cursor: pointer;
   background-color: purple;
