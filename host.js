@@ -7,7 +7,7 @@ document.body.innerHTML += `
   <div class='hostRoom'>
     <span id='playercount'>0 Players</span> 
     <span id='roomID'>XXXXXX</span>
-    <div><button onclick='startGame()' class="pointer start">Start Game</button></div>
+    <div onclick='startGame()' class="pointer start">Start Game</div>
   </div>
   <div class="line"></div>
   <div class='playerDisplay' id='playerlist'></div>
@@ -38,8 +38,9 @@ document.body.innerHTML += `
 #roomID {
   font-size: 250%;
 }
-.start {
-  align-content: center;
+.start:hover {
+  cursor: pointer;
+  background-color: red;
 }
 .exitbutton {
   position: absolute;
