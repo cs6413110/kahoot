@@ -39,7 +39,7 @@ document.body.innerHTML += `
   font-size: 250%;
 }
 .start {
-  width: 100%;
+  height: 100%;
 }
 .start:hover {
   cursor: pointer;
