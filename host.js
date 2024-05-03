@@ -36,7 +36,7 @@ document.body.innerHTML += `
     
 /* LeaderBoard */
 #roomID {
-  font-size: 1%;
+  font-size: 250%;
 }
 .exitbutton {
   position: absolute;
@@ -44,7 +44,7 @@ document.body.innerHTML += `
   text-align: center;
   align-content: center;
   font-size: 300%;
-  justify-content: ;
+  justify-content: center;
   width: 100%;
   height: 15%;
   background-color: red;
@@ -81,7 +81,7 @@ document.body.innerHTML += `
 .hostRoom {
   width: 100%;
   background-color: red;
-  height: 10%;
+  height: 20%;
 }
 #roomID, #playercount {
   color: white;
