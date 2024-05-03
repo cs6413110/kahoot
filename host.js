@@ -37,6 +37,14 @@ document.body.innerHTML += `
 /* LeaderBoard */
 .exitbutton {
   position: absolute;
+  top: 0;
+  width: 100%;
+  height: 15%;
+  background-color: orangered;
+}
+.exitbutton:hover {
+  cursor: pointer;
+  background-color: lighted;
 }
 /* Host Game Button */
 #initial {
