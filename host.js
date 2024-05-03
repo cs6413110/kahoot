@@ -172,7 +172,7 @@ document.body.innerHTML += `
   cursor: pointer;
 } 
 #a, #b, #c, #d {
-  font-size: 50px;
+  font-size: 5%;
 }
 #a, #b {
   margin-top: 1%;
