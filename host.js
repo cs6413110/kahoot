@@ -7,7 +7,7 @@ document.body.innerHTML += `
   <div class='hostRoom'>
     <span id='playercount'>0 Players</span> 
     <span id='roomID'>XXXXXX</span>
-    <div><button onclick='startGame()' class="pointer">Start Game</button></div>
+    <div><button onclick='startGame()' class="pointer start">Start Game</button></div>
   </div>
   <div class="line"></div>
   <div class='playerDisplay' id='playerlist'></div>
@@ -37,6 +37,9 @@ document.body.innerHTML += `
 /* LeaderBoard */
 #roomID {
   font-size: 250%;
+}
+.start {
+  align-content: center;
 }
 .exitbutton {
   position: absolute;
@@ -87,7 +90,7 @@ document.body.innerHTML += `
   color: white;
   padding-left: 20px;
   padding-right: 20px;
-  verticle-align8: center;
+  verticle-align: center;
   height: 100%;
   width: 20%;
 }
