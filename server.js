@@ -104,6 +104,12 @@ wss.on('connection', socket => {
         clearTimeout(room.timeout);
         room.timeout = setTimeout(() => gameNewQuestion(socket.id), 5000); // leaderboard phase
       }
+    } else if (data.event === 'gameover') {
+      if (socket !== rooms[socket.id].host) return;
+      clearTimeout(rooms[socket.id].timeout);
+      clearTimeout(rooms[socket.id].questionTimeout);
+      for (const socket of rooms[socket.id].sockets) socket.send({event: 'gameover', score: socket.score});
+      rooms[socket.id] = undefined;
     }
   });
   socket.on('close', () => {
