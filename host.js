@@ -7,7 +7,7 @@ document.body.innerHTML += `
   <div class='hostRoom'>
     <span id='playercount'>0 Players</span> 
     <span id='roomID'>XXXXXX</span>
-    <div><buttononclick='startGame()' class="pointer">Start Game</button></div>
+    <div><button onclick='startGame()' class="pointer">Start Game</button></div>
   </div>
   <div class="line"></div>
   <div class='playerDisplay' id='playerlist'></div>
