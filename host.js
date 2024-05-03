@@ -40,7 +40,7 @@ document.body.innerHTML += `
 }
 .start:hover {
   cursor: pointer;
-  background-color: red;
+  background-color: purple;
 }
 .exitbutton {
   position: absolute;
