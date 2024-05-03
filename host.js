@@ -176,7 +176,7 @@ document.body.innerHTML += `
   cursor: pointer;
 } 
 #a, #b, #c, #d {
-  font-size: auto;
+  font-size: 200%;
 }
 #a, #b {
   margin-top: 1%;
