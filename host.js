@@ -174,7 +174,6 @@ document.body.innerHTML += `
 #a, #b, #c, #d {
   font-size: 50px;
 }
-/*
 #a, #b {
   margin-top: 1%;
   margin-bottom: 1%;
@@ -189,7 +188,6 @@ document.body.innerHTML += `
 #c, #d {
   margin-right: 1%;
 }
-*/
 </style>
 `;
 const initial = document.getElementById('initial');
