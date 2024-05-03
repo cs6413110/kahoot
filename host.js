@@ -38,6 +38,9 @@ document.body.innerHTML += `
 #roomID {
   font-size: 250%;
 }
+.start {
+  top: 0;
+}
 .exitbutton {
   position: absolute;
   top: 0;
