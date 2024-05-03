@@ -87,6 +87,7 @@ document.body.innerHTML += `
   color: white;
   padding-left: 20px;
   padding-right: 20px;
+  align-content: center;
   height: 100%;
   width: 20%;
 }
