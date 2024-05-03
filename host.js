@@ -35,6 +35,9 @@ document.body.innerHTML += `
 }
     
 /* LeaderBoard */
+#roomID {
+  size: 200%;
+}
 .exitbutton {
   position: absolute;
   top: 0;
