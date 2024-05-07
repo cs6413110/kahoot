@@ -84,7 +84,7 @@ document.body.innerHTML += `
 .hostRoom {
   width: 100%;
   background-color: red;
-  height: 20%;
+  height: 10%;
 }
 #roomID, #playercount {
   color: white;
