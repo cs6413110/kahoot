@@ -98,7 +98,10 @@ top: 0;
   width: 80%;
 }
 .hostRoom div button {
-  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 10%;
   background-color: red;
   border: 1px solid red;
   color: white;
