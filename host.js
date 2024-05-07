@@ -39,7 +39,7 @@ document.body.innerHTML += `
   font-size: 250%;
 }
 .start {
-  
+top: 0;
 }
 .exitbutton {
   position: absolute;
