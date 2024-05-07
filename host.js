@@ -90,9 +90,7 @@ top: 0;
   color: white;
   padding-left: 20px;
   padding-right: 20px;
-  verticle-align: center;
   height: 100%;
-  width: 100%;
 }
 .hostRoom div {
   display: inline-block;
@@ -104,6 +102,9 @@ top: 0;
   background-color: red;
   border: 1px solid red;
   color: white;
+  margin: 0;
+  padding-top: 0;
+  paddin-bottom: 0;
   padding-left: 30px;
   padding-right: 30px;
 }
